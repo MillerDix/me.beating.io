@@ -18,7 +18,7 @@
   font-size: large;
 }
 
-@keyframes home-logo-spin {
+@keyframes home_logo_spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
