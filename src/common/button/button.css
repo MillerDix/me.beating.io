@@ -1,0 +1,29 @@
+.minimal {
+  position: relative;
+  padding: 10px 0px;
+  margin: 0px 16px;
+  color: #969696;
+  cursor: pointer;
+  letter-spacing: 2px;
+  display: inline-block;
+  transition: color .5s;
+}
+
+.underline {
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  background-color: #000;
+  bottom: 0;
+  left: 50%;
+  transition: all .5s;
+}
+
+.minimal:hover .underline {
+  width: 100%;
+  left: 0%;
+}
+
+.minimal:hover {
+  color: #000;
+}

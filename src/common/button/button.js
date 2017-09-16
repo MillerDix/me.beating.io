@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import style from './button.css';
 
-const Middleout = (props) => {
+const Minimal = (props) => {
+  console.log(props);
   return (
-    <div>Middleout</div>
+    <div className={style.minimal}>
+      {props.children}
+      <div className={style.underline}></div>
+    </div>
   );
 }
 
@@ -13,4 +17,4 @@ const Rounded = (props) => {
   );
 }
 
-export {Middleout, Rounded};
+export {Minimal, Rounded};

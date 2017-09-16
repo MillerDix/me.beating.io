@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../../assets/svg/logo.svg';
 import style from './home.css';
+import {Minimal} from '../../common/button/button.js';
 
 class Home extends Component {
   render() {
@@ -13,6 +14,7 @@ class Home extends Component {
         <p className={style.home_intro}>
           To get started, edit <code>src/home.js</code> and save to reload.
         </p>
+        <Minimal>FEATURES</Minimal>
       </div>
     );
   }

@@ -1,10 +1,14 @@
+@font-face {
+  font-family: "Fira Sans Light";
+  src: url('./assets/fonts/FiraSans-Light.ttf');
+}
 /* global */
 html {
   background-color: white;
+  font-family: "Fira Sans Light";
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
 }
