@@ -1,6 +1,6 @@
 // basic
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Router, Route, Switch} from 'react-router-dom';
 import {createBrowserHistory} from 'history';
 
 // page
@@ -11,7 +11,7 @@ const history = createBrowserHistory();
 const Routes = () => (
   <Router history={history} >
     <Switch>
-      <Route path="/" component={Home} />
+      <Route exact path="/" component={Home} />
     </Switch>
   </Router>
 )
