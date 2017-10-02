@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-import logo from '../../assets/svg/logo.svg';
 import style from './home.css';
 import {Minimal} from '../../common/button/button.js';
+import Cassini from '../../assets/images/CASSINI_THE_GRAND_FINALE.jpg';
 
 class Home extends Component {
   render() {
     return (
       <div className={style.home}>
         <div className={style.home_header}>
-          <img src={logo} className={style.home_logo} alt="logo" />
-          <h2>Welcome to React</h2>
+          <div className={style.navlogo}>Beating</div>
+          <div className={style.navbar}>
+            <Minimal>HOME</Minimal>
+            <Minimal>MUSIC.BEATING</Minimal>
+            <Minimal>API.BEATING</Minimal>
+            <Minimal>ADMIN.BEATING</Minimal>
+            <Minimal>ABOUT ME</Minimal>
+          </div>
         </div>
-        <p className={style.home_intro}>
-          To get started, edit <code>src/home.js</code> and save to reload.
-        </p>
-        <Minimal>FEATURES</Minimal>
+        <div className={style.home_body}>
+          <img className={style.post} src={Cassini} alt="poster" />
+          {/* <div className={style.mask}></div> */}
+          <div className={style.content}>
+            
+          </div>
+        </div>
       </div>
     );
   }
