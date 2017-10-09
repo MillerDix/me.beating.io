@@ -18,7 +18,10 @@ class Home extends Component {
           </div>
         </div>
         <div className={style.home_body}>
-          <img className={style.post} src={Cassini} alt="poster" />
+          <div className={style.post}>
+            <img src={Cassini} alt="poster" />
+            <div className={style.mask}></div>
+          </div>
           {/* <div className={style.mask}></div> */}
           <div className={style.content}>
             
