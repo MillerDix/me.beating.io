@@ -63,5 +63,10 @@
   right: 0;
   height: 800px;
   z-index: 3;
-  background-color: red;
+  background-color: white;
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px 28px 50px 28px;
 }

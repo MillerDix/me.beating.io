@@ -31,10 +31,10 @@
 .rounded {
   display: inline-block;
   position: relative;
-  padding: 0 20px 0 20px;
+  padding: 0 24px 0 24px;
   height: 36px;
   background-color: #e8ecee;
-  border-radius: 16px;
+  border-radius: 18px;
   cursor: pointer;
   text-align: center;
   line-height: 36px;

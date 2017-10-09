@@ -1,8 +1,42 @@
 import React, { Component } from 'react';
-import style from './home.css';
 import {Minimal, Rounded, ArticleImg} from '../../common/button/button.js';
+import Article from '../../common/article/article.js';
+
+import style from './home.css';
+
 import Cassini from '../../assets/images/CASSINI_THE_GRAND_FINALE.jpg';
 import Dawn from '../../assets/images/dawn.jpg';
+import Astronaut from '../../assets/images/astronaut.jpg';
+import Curiosity from '../../assets/images/curiosity.jpg';
+import Space from '../../assets/images/space.jpg';
+
+// article
+const TDATA = [
+  {
+    title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
+    subtitle: 'AUGUST 11, 2016',
+    content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
+    image: Dawn
+  },
+  {
+    title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
+    subtitle: 'AUGUST 11, 2016',
+    content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
+    image: Astronaut
+  },
+  {
+    title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
+    subtitle: 'AUGUST 11, 2016',
+    content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
+    image: Curiosity
+  },
+  {
+    title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
+    subtitle: 'AUGUST 11, 2016',
+    content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
+    image: Space
+  }
+]
 
 class Home extends Component {
   render() {
@@ -24,9 +58,11 @@ class Home extends Component {
             <div className={style.mask}></div>
           </div>
           <div className={style.content}>
-            <Rounded>READ MORE</Rounded>
-            <Rounded>ANOTHER FUCKING TEST</Rounded>
-            <ArticleImg src={Dawn}>READ MORE</ArticleImg>
+            {TDATA.map((item, index) => {
+              return (
+                <Article key={index} image={item.image} title={item.title} subtitle={item.subtitle} content={item.content}></Article>
+              );
+            })}
           </div>
         </div>
         <div className={style.footer}></div>
