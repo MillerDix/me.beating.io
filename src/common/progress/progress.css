@@ -1,0 +1,47 @@
+.container {
+    position: relative;
+    height: 40px;
+    color: white;
+    margin: 20px 0;
+}
+
+
+.container .percentage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.container .percentage .bar {
+    position: absolute;
+    background-color: white;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 8px;
+}
+
+.container .percentage .title {
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+}
+
+.container .percentage .value {
+    margin-top: 5px;
+    font-size: 16px;
+    float: right;
+}
+
+.container .fullbar {
+    background-color: #000;
+    border-radius: 4px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 8px;
+}
