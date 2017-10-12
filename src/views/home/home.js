@@ -16,7 +16,7 @@ const TDATA = [
     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
     subtitle: 'AUGUST 11, 2016',
     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-    image: Dawn
+    image: Cassini
   },
   {
     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
@@ -52,11 +52,11 @@ class Home extends Component {
             <Minimal>ABOUT ME</Minimal>
           </div>
         </div>
+        <div className={style.poster}>
+          <img src={Dawn} alt="poster" />
+          <div className={style.mask}></div>
+        </div>
         <div className={style.home_body}>
-          <div className={style.post}>
-            <img src={Cassini} alt="poster" />
-            <div className={style.mask}></div>
-          </div>
           <div className={style.content}>
             {TDATA.map((item, index) => {
               return (
@@ -64,8 +64,10 @@ class Home extends Component {
               );
             })}
           </div>
+          <div className={style.footer}>
+            <div className={style.copyright}>© 2017 MillerD. All rights reserved(just kidding).Developed by MillerD</div>
+          </div>
         </div>
-        <div className={style.footer}></div>
       </div>
     );
   }
