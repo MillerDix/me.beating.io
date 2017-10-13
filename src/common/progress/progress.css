@@ -1,8 +1,11 @@
 .container {
     position: relative;
     height: 40px;
+    width: 40%;
+    min-width: 400px;
     color: white;
     margin: 20px 0;
+    display: inline-block;
 }
 
 
@@ -25,15 +28,16 @@
 }
 
 .container .percentage .title {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 400;
     float: left;
 }
 
-.container .percentage .value {
-    margin-top: 5px;
-    font-size: 16px;
-    float: right;
+.container .value {
+    position: absolute;
+    top: 5px;
+    font-size: 14px;
+    white-space: nowrap; 
 }
 
 .container .fullbar {

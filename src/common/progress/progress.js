@@ -9,9 +9,9 @@ const Progress = props => {
             <div className={style.fullbar}></div>
             <div className={style.percentage} style={{'width': props.percent}}>
                 <div className={style.title}>{props.title}</div>
-                <div className={style.value}>{props.explain}</div>
                 <div className={style.bar}></div>
             </div>
+            <div className={style.value} style={{'left': props.percent}}>{props.explain}</div>
         </div>
     );
 }

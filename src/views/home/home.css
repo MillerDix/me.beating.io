@@ -79,3 +79,10 @@
 .footer .copyright {
   color: #969696;
 }
+
+.home_body .skillmap {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
