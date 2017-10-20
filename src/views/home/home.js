@@ -42,6 +42,12 @@ const TDATA = [
 ]
 
 class Home extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <div className={style.home}>
@@ -49,10 +55,11 @@ class Home extends Component {
           <div className={style.navlogo}>Beating</div>
           <div className={style.navbar}>
             <Minimal>HOME</Minimal>
-            <Minimal>MUSIC.BEATING</Minimal>
-            <Minimal>API.BEATING</Minimal>
-            <Minimal>ADMIN.BEATING</Minimal>
-            <Minimal>ABOUT ME</Minimal>
+            <Minimal href="http://music.beating.io">MUSIC.BEATING</Minimal>
+            <Minimal href="http://map.beating.io">MAP.BEATING</Minimal>
+            <Minimal href="http://tv.beating.io">TV.BEATING</Minimal>
+            <Minimal href="http://admin.beating.io">ADMIN.BEATING</Minimal>
+            <Minimal href="http://me.beating.io">ABOUT ME</Minimal>
           </div>
         </div>
         <div className={style.poster}>
@@ -86,7 +93,10 @@ class Home extends Component {
             </div>
           </Module>
           <div className={style.footer}>
-            <div className={style.copyright}>© 2017 MillerD. All rights reserved(just kidding).Developed by MillerD</div>
+            <div className={style.socialContact}>
+              {/* <i className="fa fa-address-book" aria-hidden="true"></i> */}
+            </div>
+            <div className={style.copyright}>© 2017 MillerD. All rights are not reserved.Developed by MillerD</div>
           </div>
         </div>
       </div>

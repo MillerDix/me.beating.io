@@ -70,19 +70,26 @@
   padding: 50px 28px 50px 28px;
 }
 
-.home_body .footer {
-  background-color: #000;
-  height: 136px;
-  text-align: center;
-}
-
-.footer .copyright {
-  color: #969696;
-}
-
 .home_body .skillmap {
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.home_body .footer {
+  background-color: #000;
+  text-align: center;
+  min-height: 136px;
+  position: relative;
+}
+
+.footer .copyright {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 0;
+  text-align: center;
+  color: #969696;
 }

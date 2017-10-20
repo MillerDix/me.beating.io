@@ -2,9 +2,13 @@ import React from 'react';
 import style from './button.css';
 
 const Minimal = (props) => {
-  console.log(props);
+  
+  const jump = url => {
+    window.location.href = url;
+  }
+
   return (
-    <div className={style.minimal}>
+    <div className={style.minimal} onClick={() => {jump(props.href)}}>
       {props.children}
       <div className={style.underline}></div>
     </div>
