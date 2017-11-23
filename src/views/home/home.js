@@ -92,6 +92,12 @@ class Home extends Component {
               <Progress title="Algorithm" percent="20%" explain="huh??"></Progress>
             </div>
           </Module>
+          <Module
+            title="Contact Me"
+            subtitle=""
+          >
+            
+          </Module>
           <div className={style.footer}>
             <div className={style.socialContact}>
               {/* <i className="fa fa-address-book" aria-hidden="true"></i> */}
