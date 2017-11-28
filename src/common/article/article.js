@@ -4,7 +4,7 @@ import {Rounded, ArticleImg} from '../button/button.js';
 
 const Article = props => {
   return (
-    <div className={style.container}>
+    <div className={style.container} onClick={props.onClick}>
       <ArticleImg src={props.image}>READ MORE</ArticleImg>
       <div className={style.body}>
         <a className={style.title}>{props.title}</a>

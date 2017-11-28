@@ -54,7 +54,7 @@ class Home extends Component {
         <div className={style.home_header}>
           <div className={style.navlogo}>Beating</div>
           <div className={style.navbar}>
-            <Minimal>HOME</Minimal>
+            <Minimal >HOME</Minimal>
             <Minimal href="http://music.beating.io">MUSIC.BEATING</Minimal>
             <Minimal href="http://map.beating.io">MAP.BEATING</Minimal>
             <Minimal href="http://tv.beating.io">TV.BEATING</Minimal>
@@ -70,7 +70,7 @@ class Home extends Component {
           <div className={style.content}>
             {TDATA.map((item, index) => {
               return (
-                <Article key={index} image={item.image} title={item.title} subtitle={item.subtitle} content={item.content}></Article>
+                <Article onClick={this.onclick} key={index} image={item.image} title={item.title} subtitle={item.subtitle} content={item.content}></Article>
               );
             })}
           </div>
