@@ -1,11 +1,15 @@
+// basic
 import React, { Component } from 'react';
 import {Minimal, Rounded, ArticleImg} from '../../common/button/button.js';
 import Article from '../../common/article/article.js';
 import Module from '../../common/module/module.js';
 import Progress from '../../common/progress/progress.js';
+import request from '../../common/request.js';
 
+// styles
 import style from './home.css';
 
+// assets
 import Cassini from '../../assets/images/CASSINI_THE_GRAND_FINALE.jpg';
 import Dawn from '../../assets/images/dawn.jpg';
 import Astronaut from '../../assets/images/astronaut.jpg';
@@ -45,10 +49,28 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      articles: []
+    };
+
+    this.onclick = this.onclick.bind(this);
+  }
+
+  componentDidMount() {
+    request({
+      url: 'http://localhost:8080/articles/all',
+      method: 'POST'
+    }).then(res => {
+      this.setState({articles: res});
+    });
+  }
+
+  onclick() {
+    console.log('onclick');
   }
 
   render() {
+    const {articles} = this.state;
     return (
       <div className={style.home}>
         <div className={style.home_header}>
@@ -68,9 +90,9 @@ class Home extends Component {
         </div>
         <div className={style.home_body}>
           <div className={style.content}>
-            {TDATA.map((item, index) => {
+            {articles.map((item, index) => {
               return (
-                <Article onClick={this.onclick} key={index} image={item.image} title={item.title} subtitle={item.subtitle} content={item.content}></Article>
+                <Article onClick={this.onclick} key={index} image={TDATA[index % 4].image} title={item.Title} subtitle={item.Subtitle} content={item.Content}></Article>
               );
             })}
           </div>
