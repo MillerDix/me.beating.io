@@ -168,3 +168,31 @@
   width: 10%;
   left: 45%;
 }
+
+.drawer {
+  position: relative;
+  width: 200px;
+  height: 240px;
+}
+
+.drawer .icon {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  bottom: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+}
+
+.drawer .info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  height: 30px;
+  background-color: #000;
+  line-height: 30px;
+  text-align: center;
+}

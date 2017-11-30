@@ -41,4 +41,13 @@ const ArticleImg = props => {
   );
 }
 
-export {Minimal, Rounded, ArticleImg};
+const Drawer = props => {
+  return (
+    <div className={style.drawer}>
+      <div className={style.icon} style={{backgroundImage: "url(" + props.image + ")"}}></div>
+      <div className={style.info}>{props.info}</div>
+    </div>
+  )
+}
+
+export {Minimal, Rounded, ArticleImg, Drawer};

@@ -44,6 +44,12 @@
     color: #000;
 }
 
-.container .children {
+.container .childrenImgBack {
     padding: 10px 5%;
+    color: white;
+}
+
+.container .childrenBlankBack {
+    padding: 10px 5%;
+    color: #000;
 }

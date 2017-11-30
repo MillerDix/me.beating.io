@@ -8,7 +8,7 @@ const Module = props => {
             <div className={props.image ? style.mask : ''}>
                 <div className={props.image ? style.titleImgBack : style.titleBlankBack}>{props.title}</div>
                 <div className={props.image ? style.subtitleImgBack : style.subtitleBlankBack}>{props.subtitle}</div>
-                <div className={style.children}>
+                <div className={props.image ? style.childrenImgBack : style.childrenBlankBack}>
                     {props.children}
                 </div>
             </div>
