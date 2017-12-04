@@ -62,7 +62,7 @@ class Home extends Component {
 
   componentDidMount() {
     request({
-      url: 'http://localhost:8080/articles/all',
+      url: 'http://45.32.248.111:8080/articles/all',
       method: 'POST'
     }).then(res => {
       this.setState({articles: res || []});
