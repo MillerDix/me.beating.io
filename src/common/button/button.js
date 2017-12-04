@@ -44,8 +44,8 @@ const ArticleImg = props => {
 const Drawer = props => {
   return (
     <div className={style.drawer}>
-      <div className={style.icon} style={{backgroundImage: "url(" + props.image + ")"}}></div>
       <div className={style.info}>{props.info}</div>
+      <div className={style.icon} style={{backgroundImage: "url(" + props.image + ")"}}></div>
     </div>
   )
 }

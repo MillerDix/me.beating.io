@@ -56,15 +56,16 @@ class Home extends Component {
       articles: []
     };
 
+    console.log(document.documentElement.clientHeight);
     this.onclick = this.onclick.bind(this);
   }
 
   componentDidMount() {
     request({
-      url: 'http://45.32.248.111:8080/articles/all',
+      url: 'http://localhost:8080/articles/all',
       method: 'POST'
     }).then(res => {
-      this.setState({articles: res});
+      this.setState({articles: res || []});
     });
   }
 
@@ -87,10 +88,10 @@ class Home extends Component {
             <Minimal href="http://me.beating.io">ABOUT ME</Minimal>
           </div>
         </div>
-        <div className={style.poster}>
+        {/* <div className={style.poster}>
           <img src={Astronaut} alt="poster" />
           <div className={style.mask}></div>
-        </div>
+        </div> */}
         <div className={style.home_body}>
           <div className={style.content}>
             {articles.map((item, index) => {
@@ -127,8 +128,10 @@ class Home extends Component {
             title="Contact Me"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           >
-            <Drawer image={Github} info="https://github.com/MillerDix"></Drawer>
-            <Drawer image={Gmail} info="zlw2579@gmail.com"></Drawer>
+            <div className={style.contacts}>
+              <Drawer image={Github} info="https://github.com/MillerDix"></Drawer>
+              <Drawer image={Gmail} info="zlw2579@gmail.com"></Drawer>
+            </div>
           </Module>
           <div className={style.footer}>
             <div className={style.copyright}>© 2017 MillerD. All rights are not reserved.Developed by MillerD</div>

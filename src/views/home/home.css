@@ -77,6 +77,12 @@
   justify-content: space-between;
 }
 
+.home_body .contacts {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
 .home_body .footer {
   background-color: #000;
   text-align: center;

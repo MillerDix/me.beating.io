@@ -171,19 +171,25 @@
 
 .drawer {
   position: relative;
-  width: 200px;
-  height: 240px;
+  width: 280px;
+  height: 280px;
 }
 
 .drawer .icon {
   position: absolute;
-  top: -30px;
-  left: 0;
-  right: 0;
-  bottom: 30px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
   background-repeat: no-repeat;
   background-position: center;
   background-color: white;
+  transition: all .3s;
+}
+
+.drawer:hover .icon {
+  top: -30px;
+  bottom: 30px;
 }
 
 .drawer .info {
@@ -195,4 +201,7 @@
   background-color: #000;
   line-height: 30px;
   text-align: center;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  cursor: pointer;
 }
