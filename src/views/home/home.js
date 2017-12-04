@@ -4,7 +4,8 @@ import {Minimal, Rounded, ArticleImg, Drawer} from '../../common/button/button.j
 import Article from '../../common/article/article.js';
 import Module from '../../common/module/module.js';
 import Progress from '../../common/progress/progress.js';
-import request from '../../common/request.js';
+import request from '../../common/utils/request.js';
+import api from '../../common/utils/api.js';
 
 // styles
 import style from './home.css';
@@ -62,7 +63,7 @@ class Home extends Component {
 
   componentDidMount() {
     request({
-      url: 'http://45.32.248.111:8080/articles/all',
+      url: api.articles_all,
       method: 'POST'
     }).then(res => {
       this.setState({articles: res || []});
