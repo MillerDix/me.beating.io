@@ -17,7 +17,7 @@ const Minimal = (props) => {
 
 const Rounded = (props) => {
   return (
-    <div className={style.rounded}>
+    <div className={style.rounded} onClick={props.onClick}>
       {props.children}
       <div className={style.leftLine}></div>
     </div>
@@ -26,7 +26,7 @@ const Rounded = (props) => {
 
 const ArticleImg = props => {
   return (
-    <div className={style.articleImg}>
+    <div className={style.articleImg} onClick={props.onClick}>
       <img src={props.src} alt="header"></img>
       <div className={style.hoverMask}></div>
       <div className={style.topLayer}>
