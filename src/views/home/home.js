@@ -1,5 +1,6 @@
-// basic
 import React, { Component } from 'react';
+
+// utils
 import {Minimal, Rounded, ArticleImg, Drawer} from '../../common/button/button.js';
 import Article from '../../common/article/article.js';
 import Module from '../../common/module/module.js';
@@ -63,15 +64,16 @@ class Home extends Component {
 
   componentDidMount() {
     request({
-      url: api.articles_all,
-      method: 'POST'
+      url: api.article.listall,
+      method: 'post'
     }).then(res => {
       this.setState({articles: res || []});
     });
   }
 
-  onclick() {
-    console.log('onclick');
+  onclick(Id) {
+    const {history} = this.props;
+    history.push("/articles/detail", {Id});
   }
 
   render() {
@@ -89,15 +91,22 @@ class Home extends Component {
             <Minimal href="http://me.beating.io">ABOUT ME</Minimal>
           </div>
         </div>
-        {/* <div className={style.poster}>
-          <img src={Astronaut} alt="poster" />
+        <div className={style.poster} style={{height: document.documentElement.clientHeight}}>
           <div className={style.mask}></div>
-        </div> */}
+        </div>
         <div className={style.home_body}>
           <div className={style.content}>
             {articles.map((item, index) => {
               return (
-                <Article onClick={this.onclick} key={index} image={TDATA[index % 4].image} title={item.Title} subtitle={item.Subtitle} content={item.Content}></Article>
+                <Article
+                  onClick={() => this.onclick(item.Id)}
+                  key={index}
+                  image={TDATA[index % 4].image}
+                  title={item.Title}
+                  subtitle={item.Subtitle}
+                  content={item.Content}
+                >
+                </Article>
               );
             })}
           </div>
@@ -119,11 +128,11 @@ class Home extends Component {
               <Progress title="Algorithm" percent="20%" explain="huh??"></Progress>
             </div>
           </Module>
-          <Module
+          {/* <Module
             title="Contact Me"
             subtitle="open for new opportunity"
           >
-          </Module>
+          </Module> */}
           <Module
             image={SunriseSpacewalk}
             title="Contact Me"

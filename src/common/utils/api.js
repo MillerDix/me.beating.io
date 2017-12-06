@@ -1,6 +1,9 @@
-const URL = "http://www.beating.io:8080";
+// const URL = "http://www.beating.io:8080";
+const URL = "http://localhost:8080";
 
 export default {
-  articles_all: `${URL}/articles/all`,
-  article: `${URL}/articles/detail`
+  article: {
+    listall: `${URL}/articles/all`,
+    detail: `${URL}/articles/detail`
+  }
 };
