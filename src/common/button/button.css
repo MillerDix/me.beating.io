@@ -173,6 +173,7 @@
   position: relative;
   width: 280px;
   height: 280px;
+  letter-spacing: 2px;
 }
 
 .drawer .icon {

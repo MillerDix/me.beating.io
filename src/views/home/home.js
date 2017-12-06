@@ -128,11 +128,11 @@ class Home extends Component {
               <Progress title="Algorithm" percent="20%" explain="huh??"></Progress>
             </div>
           </Module>
-          {/* <Module
+          <Module
             title="Contact Me"
             subtitle="open for new opportunity"
           >
-          </Module> */}
+          </Module>
           <Module
             image={SunriseSpacewalk}
             title="Contact Me"

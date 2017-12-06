@@ -11,6 +11,9 @@
     padding: 100px 0;
     background-color: rgba(0, 0, 0, 0.6);
 }
+.nomask {
+    padding: 100px 0;
+}
 
 .titleBase {
     text-align: center;
