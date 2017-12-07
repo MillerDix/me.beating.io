@@ -50,6 +50,10 @@ body {
   align-items: center;
 }
 
+.container {
+  padding-top: 90px;
+}
+
 .font-45 {
   font-size: 45px;
 }

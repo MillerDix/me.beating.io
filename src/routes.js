@@ -28,12 +28,14 @@ const Routes = () => (
         <Minimal href="http://me.beating.io">ABOUT ME</Minimal>
       </div>
     </div>
-    <Router history={history} >
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/articles/detail" component={ArtcDetail} />
-      </Switch>
-    </Router>
+    <div className={style.container}>
+      <Router history={history} >
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/articles/detail" component={ArtcDetail} />
+        </Switch>
+      </Router>
+    </div>
   </div>
 )
 
