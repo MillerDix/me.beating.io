@@ -20,6 +20,36 @@ body {
   padding: 0px;
 }
 
+.home_header {
+  position: fixed;
+  width: 100%;
+  height: 90px;
+  background-color: #E9ECEE;
+  z-index: 999;
+}
+
+.navlogo {
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  padding: 0px 5%;
+  vertical-align: top;
+  line-height: 90px;
+  font-size: 30px;
+}
+
+.navlogo::after {
+  content: "log";
+}
+
+.navbar {
+  display: inline-flex;
+  height: 100%;
+  width: 60%;
+  padding: 0px 5%;
+  align-items: center;
+}
+
 .font-45 {
   font-size: 45px;
 }

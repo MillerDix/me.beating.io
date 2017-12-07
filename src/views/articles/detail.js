@@ -32,12 +32,12 @@ class ArtcDetail extends Component {
       data: {Id},
       method: 'POST',
     }).then(res => {
-      this.setState({...res});
+      this.setState({detail: res});
     });
   }
 
   render() {
-    const {Title, Subtitle, Content, Views, Source, Publishtime} = this.state;
+    const {Title, Subtitle, Content, Views, Source, Publishtime} = this.state.detail;
     return (
       <div className={style.detail}>
         <div className={style.title}>{Title}</div>

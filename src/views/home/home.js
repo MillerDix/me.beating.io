@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // utils
-import {Minimal, Rounded, ArticleImg, Drawer} from '../../common/button/button.js';
+import {Drawer} from '../../common/button/button.js';
 import Article from '../../common/article/article.js';
 import Module from '../../common/module/module.js';
 import Progress from '../../common/progress/progress.js';
@@ -14,10 +14,8 @@ import style from './home.css';
 // assets
 import Cassini from '../../assets/images/CASSINI_THE_GRAND_FINALE.jpg';
 import Dawn from '../../assets/images/dawn.jpg';
-import Astronaut from '../../assets/images/astronaut.jpg';
 import Curiosity from '../../assets/images/curiosity.jpg';
 import Space from '../../assets/images/space.jpg';
-import Code from '../../assets/images/code.jpg';
 import SunriseSpacewalk from '../../assets/images/sunrise-spacewalk.jpg';
 import Github from '../../assets/images/github.png';
 import Gmail from '../../assets/images/gmail.png';
@@ -80,17 +78,6 @@ class Home extends Component {
     const {articles} = this.state;
     return (
       <div className={style.home}>
-        <div className={style.home_header}>
-          <div className={style.navlogo}>Beating</div>
-          <div className={style.navbar}>
-            <Minimal >HOME</Minimal>
-            <Minimal href="http://music.beating.io">MUSIC.BEATING</Minimal>
-            <Minimal href="http://map.beating.io">MAP.BEATING</Minimal>
-            <Minimal href="http://tv.beating.io">TV.BEATING</Minimal>
-            <Minimal href="http://admin.beating.io">ADMIN.BEATING</Minimal>
-            <Minimal href="http://me.beating.io">ABOUT ME</Minimal>
-          </div>
-        </div>
         <div className={style.poster} style={{height: document.documentElement.clientHeight}}>
           <div className={style.mask}></div>
         </div>
