@@ -20,7 +20,8 @@ class ArtcDetail extends Component {
         Content: '',
         Views: 0,
         Source: '',
-        Publishtime: 0
+        Publishtime: 0,
+        Poster: null
       }
     };
   }
@@ -32,18 +33,30 @@ class ArtcDetail extends Component {
       data: {Id},
       method: 'POST',
     }).then(res => {
+      // res.Content = res.Content.replace(/&nbsp;/g, " ");
       this.setState({detail: res});
     });
   }
 
   render() {
-    const {Title, Subtitle, Content, Views, Source, Publishtime} = this.state.detail;
+    const {Title, Subtitle, Content, Views, Source, Publishtime, Poster} = this.state.detail;
+    console.log(Poster);
+    var posterHeigth = (document.documentElement.clientHeight - 90 - 54) + 'px';
     return (
       <div className={style.detail}>
-        <div className={style.title}>{Title}</div>
-        <div className={style.subtitle}>{Subtitle}</div>
-        <div className={style.content}>{Content}</div>
-        <div className={style.info}>{`${Views} -- ${Source} -- ${Publishtime}`}</div>
+        <div className={style.poster}
+          style={{backgroundImage: "url("+Poster+")", height: posterHeigth}}
+        >
+          <div className={style.mask}>
+            <div className={style.titleWrapper}><div className={style.title}>{Title}</div></div>
+          </div>
+        </div>
+        <div className={style.body}>
+          {/* <div className={style.title}>{Title}</div> */}
+          <div className={style.subtitle}>{Subtitle}</div>
+          <div className={style.content} style={{fontSize: '18px'}} dangerouslySetInnerHTML={{__html: Content}}></div>
+          <div className={style.info}>{`${Views} -- ${Source} -- ${Publishtime}`}</div>
+        </div>
       </div>
     );
   }

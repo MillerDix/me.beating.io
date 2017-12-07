@@ -78,7 +78,7 @@ class Home extends Component {
     const {articles} = this.state;
     return (
       <div className={style.home}>
-        <div className={style.poster} style={{height: document.documentElement.clientHeight}}>
+        <div className={style.poster} style={{height: document.documentElement.clientHeight - 90}}>
           <div className={style.mask}></div>
         </div>
         <div className={style.home_body}>

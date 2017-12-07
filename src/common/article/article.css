@@ -4,6 +4,7 @@
   height: 600px;
   width: 428px;
   margin-bottom: 32px;
+  overflow: hidden;
 }
 
 .container .body {
@@ -22,6 +23,7 @@
 }
 
 .body .content {
+  word-wrap: break-word;
   font-size: 14px;
 }
 

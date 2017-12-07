@@ -9,7 +9,7 @@ const Article = props => {
       <div className={style.body}>
         <a className={style.title}>{props.title}</a>
         <div className={style.subtitle}>{props.subtitle}</div>
-        <div className={style.content}>{props.content}</div>
+        <div className={style.content} dangerouslySetInnerHTML={{__html: props.content}}></div>
       </div>
       <div className={style.handle}>
         <Rounded onClick={props.onClick}>READ MORE</Rounded>
