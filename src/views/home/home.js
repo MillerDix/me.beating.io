@@ -130,9 +130,6 @@ class Home extends Component {
               <Drawer image={Gmail} info="zlw2579@gmail.com"></Drawer>
             </div>
           </Module>
-          <div className={style.footer}>
-            <div className={style.copyright}>© 2017 MillerD. All rights are not reserved.Developed by MillerD</div>
-          </div>
         </div>
       </div>
     );

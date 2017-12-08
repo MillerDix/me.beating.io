@@ -54,6 +54,18 @@ body {
   padding-top: 90px;
 }
 
+
+.footer {
+  background-color: #000;
+  text-align: center;
+}
+
+.footer .copyright {
+  padding: 20px 0;
+  text-align: center;
+  color: #969696;
+}
+
 .font-45 {
   font-size: 45px;
 }

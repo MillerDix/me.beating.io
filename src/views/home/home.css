@@ -52,14 +52,3 @@
   justify-content: space-around;
   margin-top: 50px;
 }
-
-.home_body .footer {
-  background-color: #000;
-  text-align: center;
-}
-
-.footer .copyright {
-  padding: 20px 0;
-  text-align: center;
-  color: #969696;
-}
