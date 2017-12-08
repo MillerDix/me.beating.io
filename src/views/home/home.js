@@ -79,7 +79,9 @@ class Home extends Component {
     return (
       <div className={style.home}>
         <div className={style.poster} style={{height: document.documentElement.clientHeight - 90}}>
-          <div className={style.mask}></div>
+          {
+            /* <div className={style.mask}></div> */
+          }
         </div>
         <div className={style.home_body}>
           <div className={style.content}>

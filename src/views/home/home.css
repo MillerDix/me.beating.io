@@ -24,10 +24,10 @@
 }
 
 .home_body {
-  position: absolute;
+  /* position: absolute;
   top: 100%;
   left: 0;
-  right: 0;
+  right: 0; */
 }
 
 .home_body .content {
