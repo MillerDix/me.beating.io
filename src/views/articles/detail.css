@@ -52,3 +52,9 @@
 .detail .body .content {
   word-wrap: break-word;
 }
+
+.detail .body .info {
+  font-size: 14px;
+  text-align: right;
+  padding-top: 60px;
+}

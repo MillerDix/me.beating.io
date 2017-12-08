@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import moment from 'moment';
 
 // utils
 import request from '../../common/utils/request.js';
@@ -33,14 +34,12 @@ class ArtcDetail extends Component {
       data: {Id},
       method: 'POST',
     }).then(res => {
-      // res.Content = res.Content.replace(/&nbsp;/g, " ");
       this.setState({detail: res});
     });
   }
 
   render() {
     const {Title, Subtitle, Content, Views, Source, Publishtime, Poster} = this.state.detail;
-    console.log(Poster);
     var posterHeigth = (document.documentElement.clientHeight - 90 - 54) + 'px';
     return (
       <div className={style.detail}>
@@ -52,10 +51,9 @@ class ArtcDetail extends Component {
           </div>
         </div>
         <div className={style.body}>
-          {/* <div className={style.title}>{Title}</div> */}
           <div className={style.subtitle}>{Subtitle}</div>
           <div className={style.content} style={{fontSize: '18px'}} dangerouslySetInnerHTML={{__html: Content}}></div>
-          <div className={style.info}>{`${Views} -- ${Source} -- ${Publishtime}`}</div>
+          <div className={style.info}>{`${Views} - ${Source} - ${moment(parseInt(Publishtime, 0)).format('MMMM Do YYYY')}`}</div>
         </div>
       </div>
     );
