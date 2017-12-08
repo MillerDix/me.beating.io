@@ -25,6 +25,8 @@
 .body .content {
   word-wrap: break-word;
   font-size: 14px;
+  max-height: 80px;
+  overflow: hidden;
 }
 
 .container .handle {
