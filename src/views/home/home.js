@@ -93,7 +93,7 @@ class Home extends Component {
                   image={TDATA[index % 4].image}
                   title={item.Title}
                   subtitle={item.Subtitle}
-                  content={item.Content}
+                  content={item.Summary}
                 >
                 </Article>
               );
