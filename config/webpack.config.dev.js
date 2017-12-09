@@ -153,6 +153,20 @@ module.exports = {
               cacheDirectory: true,
             },
           },
+          // load index.css the normal way, so it will be act like global.css
+          {
+            test: /index\.css$/,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  modules: false
+                },
+              },
+            ]
+          },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
           // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -160,6 +174,7 @@ module.exports = {
           // in development "style" loader enables hot editing of CSS.
           {
             test: /\.css$/,
+            exclude: [/index\.css/],
             use: [
               require.resolve('style-loader'),
               {

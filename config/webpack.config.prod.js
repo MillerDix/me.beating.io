@@ -153,6 +153,20 @@ module.exports = {
               compact: true,
             },
           },
+          // load index.css the normal way, so it will be act like global.css
+          {
+            test: /index\.css$/,
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  modules: false
+                },
+              },
+            ]
+          },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -167,6 +181,7 @@ module.exports = {
           // in the main CSS file.
           {
             test: /\.css$/,
+            exclude: [/index\.css/],
             loader: ExtractTextPlugin.extract(
               Object.assign(
                 {

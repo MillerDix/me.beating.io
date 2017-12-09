@@ -7,9 +7,6 @@ import {createBrowserHistory} from 'history';
 import Home from './views/home/home.js';
 import ArtcDetail from './views/articles/detail';
 
-// style
-import style from './index.css'
-
 // component
 import {Minimal} from './common/button/button.js';
 
@@ -17,9 +14,9 @@ const history = createBrowserHistory();
 
 const Routes = () => (
   <div>
-    <div className={style.home_header}>
-      <div className={style.navlogo}>Beating</div>
-      <div className={style.navbar}>
+    <div className="home_header">
+      <div className="navlogo">Beating</div>
+      <div className="navbar">
         <Minimal >HOME</Minimal>
         <Minimal href="http://music.beating.io">MUSIC.BEATING</Minimal>
         <Minimal href="http://map.beating.io">MAP.BEATING</Minimal>
@@ -28,7 +25,7 @@ const Routes = () => (
         <Minimal href="http://me.beating.io">ABOUT ME</Minimal>
       </div>
     </div>
-    <div className={style.container}>
+    <div className="container">
       <Router history={history} >
         <Switch>
           <Route exact path="/" component={Home} />
@@ -36,8 +33,8 @@ const Routes = () => (
         </Switch>
       </Router>
     </div>
-    <div className={style.footer}>
-      <div className={style.copyright}>© 2017 MillerD. All rights are not reserved.Developed by MillerD</div>
+    <div className="footer">
+      <div className="copyright">© 2017 MillerD. All rights are not reserved.Developed by MillerD</div>
     </div>
   </div>
 )
