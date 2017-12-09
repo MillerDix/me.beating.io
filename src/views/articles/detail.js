@@ -44,13 +44,15 @@ class ArtcDetail extends Component {
     var posterHeigth = (document.documentElement.clientHeight - 90 - 54) + 'px';
     return (
       <div className={style.detail}>
-        <div className={style.poster}
-          style={{backgroundImage: "url("+Poster+")", height: posterHeigth}}
-        >
-          <div className={style.mask}>
-            <div className={style.titleWrapper}><div className={style.title}>{Title}</div></div>
-          </div>
-        </div>
+        {this.Poster ? 
+          <div className={style.poster}
+            style={{backgroundImage: "url("+Poster+")", height: posterHeigth}}
+          >
+            <div className={style.mask}>
+              <div className={style.titleWrapper}><div className={style.title}>{Title}</div></div>
+            </div>
+          </div> : null
+        }
         <div className={style.body}>
           <div className={style.subtitle}>{Subtitle}</div>
           <Markdown className="markdownBody" escapeHtml={true} source={Content} />
