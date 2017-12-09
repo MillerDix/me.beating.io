@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import moment from 'moment';
+import Markdown from 'react-markdown';
 
 // utils
 import request from '../../common/utils/request.js';
@@ -52,7 +53,7 @@ class ArtcDetail extends Component {
         </div>
         <div className={style.body}>
           <div className={style.subtitle}>{Subtitle}</div>
-          <div className={style.content} style={{fontSize: '18px'}} dangerouslySetInnerHTML={{__html: Content}}></div>
+          <Markdown className={style.markdownBody} escapeHtml={true} source={Content} />
           <div className={style.info}>{`${Views} - ${Source} - ${moment(parseInt(Publishtime, 0)).format('MMMM Do YYYY')}`}</div>
         </div>
       </div>
