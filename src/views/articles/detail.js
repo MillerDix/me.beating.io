@@ -44,7 +44,7 @@ class ArtcDetail extends Component {
     var posterHeigth = (document.documentElement.clientHeight - 90 - 54) + 'px';
     return (
       <div className={style.detail}>
-        {this.Poster ? 
+        {Poster ? 
           <div className={style.poster}
             style={{backgroundImage: "url("+Poster+")", height: posterHeigth}}
           >
