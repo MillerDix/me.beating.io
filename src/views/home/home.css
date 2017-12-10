@@ -36,7 +36,7 @@
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 50px 28px 50px 28px;
 }
 
