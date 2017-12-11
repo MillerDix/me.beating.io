@@ -53,11 +53,13 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      articles: []
+      articles: [],
+      posterHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90)
     };
 
-    console.log(document.documentElement.clientHeight);
     this.onclick = this.onclick.bind(this);
+    this._resizePosterHeight = this._resizePosterHeight.bind(this);
+    window.addEventListener('resize', this._resizePosterHeight, false);
   }
 
   componentDidMount() {
@@ -69,6 +71,16 @@ class Home extends Component {
     });
   }
 
+  componentWillUnmount() {
+    console.log('unmount');
+    window.removeEventListener('resize', this._resizePosterHeight, false);
+  }
+
+  _resizePosterHeight() {
+    console.log('asdf');
+    this.setState({posterHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90)});
+  }
+
   onclick(Id) {
     const {history} = this.props;
     history.push("/articles/detail", {Id});
@@ -76,9 +88,10 @@ class Home extends Component {
 
   render() {
     const {articles} = this.state;
+    // TODO: THIS IS UGLY
     return (
       <div className={style.home}>
-        <div className={style.poster} style={{height: document.documentElement.clientHeight - 90}}>
+        <div className={style.poster} style={{height: this.state.posterHeight}}>
           {
             /* <div className={style.mask}></div> */
           }
