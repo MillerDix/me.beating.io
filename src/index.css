@@ -37,20 +37,19 @@ body {
     display: inline-block;
     width: 20%;
     height: 100%;
-    padding: 0px 5%;
+    padding: 0px 24px;
     vertical-align: top;
     line-height: 56px;
     font-size: 24px;
   }
 
   .home_header .navbar {
-    display: inline-flex;
-    height: 100%;
-    width: 65%;
-    align-items: center;
-    overflow: hidden;
-    justify-content: flex-end;
-    display: none;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    background-color: #E9ECEE;
+    justify-content: flex-start;
+    padding: 0 12px;
   }
 
   .home_header .navToggle {
@@ -60,6 +59,7 @@ body {
     position: absolute;
     right: 3%;
     top: 0;
+    cursor: pointer;
   }
 
   .home_header .navToggle .bar {
@@ -112,7 +112,7 @@ body {
     display: inline-block;
     width: 20%;
     height: 100%;
-    padding: 0px 5%;
+    padding: 0px 24px;
     vertical-align: top;
     line-height: 90px;
     font-size: 30px;
