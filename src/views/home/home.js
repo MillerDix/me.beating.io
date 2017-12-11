@@ -72,12 +72,10 @@ class Home extends Component {
   }
 
   componentWillUnmount() {
-    console.log('unmount');
     window.removeEventListener('resize', this._resizePosterHeight, false);
   }
 
   _resizePosterHeight() {
-    console.log('asdf');
     this.setState({posterHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90)});
   }
 

@@ -1,5 +1,19 @@
-.detail {
-  padding: 0 36px;
+@media screen and (max-width:1024px) {
+  .detail .body {
+    padding: 54px 30px 0 30px;
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (min-width:1025px) {
+  .detail {
+    padding: 0 36px;
+  }
+
+  .detail .body {
+    padding: 54px 20% 0 20%;
+    overflow-x: hidden;
+  }
 }
 
 .detail .poster {
@@ -42,11 +56,6 @@
   background-color: white;
   height: 1px;
   width: 27px;
-}
-
-.detail .body {
-  padding: 54px 20% 0 20%;
-  overflow-x: hidden;
 }
 
 .detail .body .content {
