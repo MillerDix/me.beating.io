@@ -6,6 +6,7 @@
   cursor: pointer;
   letter-spacing: 2px;
   display: inline-block;
+  white-space: nowrap;
   transition: color .5s;
 }
 

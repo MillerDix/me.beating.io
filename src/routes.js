@@ -18,12 +18,13 @@ const Routes = () => (
       <div className="navlogo">Beating</div>
       <div className="navbar">
         <Minimal >HOME</Minimal>
-        <Minimal href="http://music.beating.io">MUSIC.BEATING</Minimal>
-        <Minimal href="http://map.beating.io">MAP.BEATING</Minimal>
-        <Minimal href="http://tv.beating.io">TV.BEATING</Minimal>
-        <Minimal href="http://admin.beating.io">ADMIN.BEATING</Minimal>
+        <Minimal href="http://music.beating.io">MUSIC</Minimal>
+        <Minimal href="http://map.beating.io">MAP</Minimal>
+        <Minimal href="http://tv.beating.io">TV</Minimal>
+        <Minimal href="http://admin.beating.io">ADMIN</Minimal>
         <Minimal href="http://me.beating.io">ABOUT ME</Minimal>
       </div>
+      <div className="navToggle"><div className="bar"></div></div>
     </div>
     <div className="container">
       <Router history={history} >
