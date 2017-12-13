@@ -21,32 +21,32 @@ import Github from '../../assets/images/github.png';
 import Gmail from '../../assets/images/gmail.png';
 
 // article
-const TDATA = [
-  {
-    title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
-    subtitle: 'AUGUST 11, 2016',
-    content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-    image: Cassini
-  },
-  {
-    title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
-    subtitle: 'AUGUST 11, 2016',
-    content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-    image: Dawn
-  },
-  {
-    title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
-    subtitle: 'AUGUST 11, 2016',
-    content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-    image: Curiosity
-  },
-  {
-    title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
-    subtitle: 'AUGUST 11, 2016',
-    content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-    image: Space
-  }
-]
+// const TDATA = [
+//   {
+//     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
+//     subtitle: 'AUGUST 11, 2016',
+//     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
+//     image: Cassini
+//   },
+//   {
+//     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
+//     subtitle: 'AUGUST 11, 2016',
+//     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
+//     image: Dawn
+//   },
+//   {
+//     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
+//     subtitle: 'AUGUST 11, 2016',
+//     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
+//     image: Curiosity
+//   },
+//   {
+//     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
+//     subtitle: 'AUGUST 11, 2016',
+//     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
+//     image: Space
+//   }
+// ]
 
 class Home extends Component {
 
@@ -101,7 +101,7 @@ class Home extends Component {
                 <Article
                   onClick={() => this.onclick(item.Id)}
                   key={index}
-                  image={TDATA[index % 4].image}
+                  image={item.Poster}
                   title={item.Title}
                   subtitle={item.Subtitle}
                   content={item.Summary}
