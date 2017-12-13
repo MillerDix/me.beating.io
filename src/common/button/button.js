@@ -27,7 +27,7 @@ const Rounded = (props) => {
 const ArticleImg = props => {
   return (
     <div className={style.articleImg} onClick={props.onClick}>
-      <img src={props.src} alt="header"></img>
+      <div className={style.poster} style={{backgroundImage: 'url(' + props.src + ')'}}></div>
       <div className={style.hoverMask}></div>
       <div className={style.topLayer}>
         <div className={style.vLine} style={{left: '0'}}></div>

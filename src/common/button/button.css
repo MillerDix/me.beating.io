@@ -67,10 +67,27 @@
 
 .articleImg {
   position: relative;
-  width: 428px;
-  height: 300px;
+  min-height: 300px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.articleImg .poster {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+  transition: all .5s;
 }
 
 .articleImg .hoverMask {
@@ -87,24 +104,12 @@
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.articleImg:hover img {
+.articleImg:hover .poster {
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
   -o-filter: blur(2px);
   -ms-filter: blur(2px);
   filter: blur(2px);
-}
-
-.articleImg img {
-  width: 100%;
-  height: 100%;
-
-  -webkit-filter: blur(0px);
-  -moz-filter: blur(0px);
-  -o-filter: blur(0px);
-  -ms-filter: blur(0px);
-  filter: blur(0px);
-  transition: all .5s;
 }
 
 .articleImg .topLayer {
