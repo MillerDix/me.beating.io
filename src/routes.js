@@ -33,7 +33,7 @@ class Routes extends Component {
         <div className="home_header">
           <div className="navlogo">Beating</div>
           <div className={`navbar ${this.state.folderOn}`}>
-            <Minimal >HOME</Minimal>
+            <Minimal href="http://beating.io">HOME</Minimal>
             <Minimal href="http://music.beating.io">MUSIC</Minimal>
             <Minimal href="http://map.beating.io">MAP</Minimal>
             <Minimal href="http://tv.beating.io">TV</Minimal>
@@ -46,7 +46,7 @@ class Routes extends Component {
           <Router history={history} >
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/articles/detail" component={ArtcDetail} />
+              <Route exact path="/articles/detail/:id" component={ArtcDetail} />
             </Switch>
           </Router>
         </div>

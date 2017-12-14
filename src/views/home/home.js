@@ -81,7 +81,7 @@ class Home extends Component {
 
   onclick(Id) {
     const {history} = this.props;
-    history.push("/articles/detail", {Id});
+    history.push(`/articles/detail/${Id}`);
   }
 
   render() {

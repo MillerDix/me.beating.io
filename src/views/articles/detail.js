@@ -29,10 +29,10 @@ class ArtcDetail extends Component {
   }
 
   componentDidMount() {
-    const {Id} = this.props.location.state;
+    const { id } = this.props.match.params;
     request({
       url: api.article.detail,
-      data: {Id},
+      data: {Id: parseInt(id, 10)},   // need int
       method: 'POST',
     }).then(res => {
       this.setState({detail: res});
