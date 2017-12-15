@@ -16,11 +16,27 @@ class Routes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      folderOn: 'display-none'
+      folderOn: 'display-none',
+      showScrollToTop: false
     };
 
     this.toggle = this.toggle.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
+    this.showScroll = this.showScroll.bind(this);
+    window.addEventListener('scroll', this.showScroll, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.showScroll, false);
+  }
+
+  showScroll() {
+    let currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    if (currentPosition > 500) {
+      this.setState({showScrollToTop: true});
+    }else{
+      this.setState({showScrollToTop: false});
+    }
   }
 
   toggle() {
@@ -62,20 +78,21 @@ class Routes extends Component {
             </Switch>
           </Router>
         </div>
-        <i className="fas fa-angle-up" onClick={() => this.scrollToTop()}
-          style={{
-            fontSize: '46px',
-            color: 'white',
-            position: 'fixed',
-            right: '20px',
-            bottom: '20px',
-            backgroundColor: 'black',
-            width: '46px',
-            textAlign: 'center',
-            borderRadius: '23px',
-            cursor: 'pointer'
-          }}
-        ></i>
+        {this.state.showScrollToTop ? 
+          <i className="fas fa-angle-up" onClick={() => this.scrollToTop()}
+            style={{
+              fontSize: '46px',
+              color: 'white',
+              position: 'fixed',
+              right: '20px',
+              bottom: '20px',
+              backgroundColor: 'black',
+              width: '46px',
+              textAlign: 'center',
+              borderRadius: '23px',
+              cursor: 'pointer'
+            }}
+          ></i> : null}
         <div className="footer">
           <div className="copyright">© 2017 MillerD. All rights are not reserved.Developed by MillerD</div>
         </div>
