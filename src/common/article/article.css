@@ -25,11 +25,14 @@
 
 .container .body {
   padding: 32px 32px 0 32px;
+  overflow-x: hidden;
 }
 
 .container .body .title {
-  color: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   letter-spacing: 2px;
+  overflow: hidden;
 }
 
 .body .subtitle {

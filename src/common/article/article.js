@@ -7,7 +7,7 @@ const Article = props => {
     <div className={style.container}>
       <ArticleImg src={props.image} onClick={props.onClick}>READ MORE</ArticleImg>
       <div className={style.body}>
-        <a className={style.title}>{props.title}</a>
+        <div className={style.title}>{props.title}</div>
         <div className={style.subtitle}>{props.subtitle}</div>
         <div className={style.content} dangerouslySetInnerHTML={{__html: props.content}}></div>
       </div>
