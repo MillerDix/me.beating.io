@@ -20,11 +20,23 @@ class Routes extends Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this);
   }
 
   toggle() {
     if (this.state.folderOn === 'display-flex') {this.setState({folderOn: 'display-none'});}
     else {this.setState({folderOn: 'display-flex'});}
+  }
+
+  scrollToTop() {
+    let timer = null, currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    let avStep = currentPosition / 50;
+    const sc = () => {
+      currentPosition -= avStep;
+      if (currentPosition > 0) {window.scrollTo(0, currentPosition);}
+      else {window.scrollTo(0, 0);clearInterval(timer);}
+    }
+    timer = setInterval(sc, 1);
   }
 
   render() {
@@ -50,6 +62,20 @@ class Routes extends Component {
             </Switch>
           </Router>
         </div>
+        <i className="fas fa-angle-up" onClick={() => this.scrollToTop()}
+          style={{
+            fontSize: '46px',
+            color: 'white',
+            position: 'fixed',
+            right: '20px',
+            bottom: '20px',
+            backgroundColor: 'black',
+            width: '46px',
+            textAlign: 'center',
+            borderRadius: '23px',
+            cursor: 'pointer'
+          }}
+        ></i>
         <div className="footer">
           <div className="copyright">© 2017 MillerD. All rights are not reserved.Developed by MillerD</div>
         </div>

@@ -46,7 +46,7 @@
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 4px;
-    padding: 0 110px;
+    padding: 0 5%;
     word-wrap: break-word;
   }
 }
@@ -58,7 +58,7 @@
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 0 20px;
+    padding: 0 5%;
     word-wrap: break-word;
   }
 }
