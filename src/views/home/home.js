@@ -17,8 +17,6 @@ import Dawn from '../../assets/images/dawn.jpg';
 import Curiosity from '../../assets/images/curiosity.jpg';
 import Space from '../../assets/images/space.jpg';
 import SunriseSpacewalk from '../../assets/images/sunrise-spacewalk.jpg';
-import Github from '../../assets/images/github.png';
-import Gmail from '../../assets/images/gmail.png';
 
 // article
 // const TDATA = [
@@ -139,8 +137,8 @@ class Home extends Component {
             subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           >
             <div className={style.contacts}>
-              <Drawer image={Github} info="https://github.com/MillerDix"></Drawer>
-              <Drawer image={Gmail} info="zlw2579@gmail.com"></Drawer>
+              <Drawer info="https://github.com/MillerDix"><i className="fab fa-github"></i></Drawer>
+              <Drawer info="zlw2579@gmail.com"><i className="far fa-envelope"></i></Drawer>
             </div>
           </Module>
         </div>

@@ -184,6 +184,9 @@
 
 .drawer .icon {
   position: absolute;
+  font-size: 80px;
+  line-height: 280px;
+  text-align: center;
   top: 0px;
   left: 0px;
   right: 0px;
