@@ -1,7 +1,7 @@
 // basic
 import React, {Component} from 'react';
-import {Router, Route, Switch} from 'react-router-dom';
-import {createBrowserHistory} from 'history';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+// import {createBrowserHistory} from 'history';
 
 // page
 import Home from './views/home/home.js';
@@ -10,9 +10,9 @@ import ArtcDetail from './views/articles/detail';
 // component
 import {Minimal} from './common/button/button.js';
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 
-class Routes extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +27,7 @@ class Routes extends Component {
   }
 
   componentWillUnmount() {
+    console.log('routes quit');
     window.removeEventListener('scroll', this.showScroll, false);
   }
 
@@ -45,14 +46,15 @@ class Routes extends Component {
   }
 
   scrollToTop() {
-    let timer = null, currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
-    let avStep = currentPosition / 50;
-    const sc = () => {
-      currentPosition -= avStep;
-      if (currentPosition > 0) {window.scrollTo(0, currentPosition);}
-      else {window.scrollTo(0, 0);clearInterval(timer);}
-    }
-    timer = setInterval(sc, 1);
+    window.scrollTo(0, 0);
+    // let timer = null, currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    // let avStep = currentPosition / 50;
+    // const sc = () => {
+    //   currentPosition -= avStep;
+    //   if (currentPosition > 0) {window.scrollTo(0, currentPosition);}
+    //   else {window.scrollTo(0, 0);clearInterval(timer);}
+    // }
+    // timer = setInterval(sc, 1);
   }
 
   render() {
@@ -71,11 +73,11 @@ class Routes extends Component {
           <div className="navToggle" onClick={() => this.toggle()}><div className="bar"></div></div>
         </div>
         <div className="container">
-          <Router history={history} >
-            <Switch>
+          <Router>
+            <div>
               <Route exact path="/" component={Home} />
-              <Route exact path="/articles/detail/:id" component={ArtcDetail} />
-            </Switch>
+              <Route path="/articles/detail/:id" component={ArtcDetail} />
+            </div>
           </Router>
         </div>
         {this.state.showScrollToTop ? 
@@ -100,4 +102,4 @@ class Routes extends Component {
     );
   }
 }
-export default Routes;
+export default App;

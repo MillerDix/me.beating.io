@@ -103,8 +103,7 @@ class Home extends Component {
                   title={item.Title}
                   subtitle={item.Subtitle}
                   content={item.Summary}
-                >
-                </Article>
+                />
               );
             })}
           </div>
