@@ -1,7 +1,7 @@
 // basic
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-// import {createBrowserHistory} from 'history';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 // page
 import Home from './views/home/home.js';
@@ -24,6 +24,7 @@ class App extends Component {
     this.scrollToTop = this.scrollToTop.bind(this);
     this.showScroll = this.showScroll.bind(this);
     window.addEventListener('scroll', this.showScroll, false);
+    window._page_loaded();
   }
 
   componentWillUnmount() {
@@ -76,7 +77,13 @@ class App extends Component {
           <Router>
             <div>
               <Route exact path="/" component={Home} />
-              <Route path="/articles/detail/:id" component={ArtcDetail} />
+              <ReactCSSTransitionGroup
+                transitionName="fade"
+                transitionEnterTimeout={300}
+                transitionLeaveTimeout={300}
+              >
+                <Route path="/articles/detail/:id" component={ArtcDetail} />
+              </ReactCSSTransitionGroup>
             </div>
           </Router>
         </div>

@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 1;
   overflow: hidden;
-  background: url("../../assets/images/astronaut.jpg");
+  background: url('http://res.cloudinary.com/millerd/image/upload/v1515493291/astronaut_aldylu.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

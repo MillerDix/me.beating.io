@@ -12,11 +12,7 @@ import api from '../../common/utils/api.js';
 import style from './home.css';
 
 // assets
-import Cassini from '../../assets/images/CASSINI_THE_GRAND_FINALE.jpg';
-import Dawn from '../../assets/images/dawn.jpg';
-import Curiosity from '../../assets/images/curiosity.jpg';
-import Space from '../../assets/images/space.jpg';
-import SunriseSpacewalk from '../../assets/images/sunrise-spacewalk.jpg';
+import cloudinaries from '../../common/utils/cloudinaries.js';
 
 // article
 // const TDATA = [
@@ -108,7 +104,7 @@ class Home extends Component {
             })}
           </div>
           <Module
-            image={Dawn}
+            image={cloudinaries.Dawn}
             title="Check My Skills"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           >
@@ -131,7 +127,7 @@ class Home extends Component {
           >
           </Module>
           <Module
-            image={SunriseSpacewalk}
+            image={cloudinaries.SunriseSpacewalk}
             title="Contact Me"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           >
