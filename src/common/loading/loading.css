@@ -1,0 +1,53 @@
+@keyframes spin{
+  to{
+    -webkit-transform:rotate(360deg);
+    transform:rotate(360deg);
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  text-align: center;
+  font-size: 50px;
+  z-index: 9999;
+  color: white;
+}
+
+.spin {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  /* background-color: white; */
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+}
+
+.spin::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  border-radius: 50%;
+  -webkit-animation: spin .5s infinite linear;
+  animation: spin .5s infinite linear;
+  background: linear-gradient(#111111, transparent 55%);
+}
+
+.spin::after {
+  content: "";
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  top: 2.5%;
+  left: 2.5%;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: white;
+}

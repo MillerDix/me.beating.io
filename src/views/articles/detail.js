@@ -30,7 +30,7 @@ class ArtcDetail extends Component {
   }
 
   componentWillMount() {
-    Loading.start();
+    Loading.start(0);
   }
 
   componentDidMount() {

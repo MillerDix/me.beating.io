@@ -1,22 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
+import style from './loading.css';
 
 const Loading = {
   start: function(time) {
     let loadingDOM = (
-      <div className="haha">
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
-          backgroundColor: 'red',
-          textAlign: 'center',
-          fontSize: '50px',
-          zIndex: '9999',
-          color: 'white'
-        }}>LOADING</div>
+      <div className={style.loading}>
+        <div className={style.spin}></div>
       </div>
     );
     let body = document.getElementById('global');
