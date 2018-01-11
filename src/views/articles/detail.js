@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import Markdown from 'react-markdown';
+import Loading from '../../common/loading/loading.js';
 
 // utils
 import request from '../../common/utils/request.js';
@@ -28,6 +29,10 @@ class ArtcDetail extends Component {
     };
   }
 
+  componentWillMount() {
+    Loading.start();
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params;
     request({
@@ -35,6 +40,7 @@ class ArtcDetail extends Component {
       data: {Id: parseInt(id, 10)},   // need int
       method: 'POST',
     }).then(res => {
+      Loading.end();
       this.setState({detail: res});
     });
   }
