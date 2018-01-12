@@ -4,6 +4,7 @@ import style from './loading.css';
 
 const Loading = {
   start: function(time) {
+    if(!time) {time = 15}
     let loadingDOM = (
       <div className={style.loading}>
         <div className={style.spin}></div>
@@ -12,7 +13,6 @@ const Loading = {
     let body = document.getElementById('global');
 
     // 禁止滚动
-    window.scrollTo(0, 0);
     document.getElementsByTagName('body')[0].style.overflow = 'hidden';
     ReactDOM.render(loadingDOM, body);
     let self = this;
@@ -20,13 +20,13 @@ const Loading = {
       setTimeout(function() {
         // TODO: who are you?
         self.end();
-      }, time);
+      }, time*1000);
     }
   },
   end: function() {
     document.getElementsByTagName('body')[0].style.overflow = 'auto';
-    let haha = document.getElementById('global');
-    ReactDOM.unmountComponentAtNode(haha);
+    let global = document.getElementById('global');
+    ReactDOM.unmountComponentAtNode(global);
   }
 }
 

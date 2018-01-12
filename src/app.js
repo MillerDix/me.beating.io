@@ -26,6 +26,10 @@ class App extends Component {
     window.addEventListener('scroll', this.showScroll, false);
   }
 
+  componentDidMount() {
+    window._app_loaded();
+  }
+
   componentWillUnmount() {
     console.log('routes quit');
     window.removeEventListener('scroll', this.showScroll, false);
