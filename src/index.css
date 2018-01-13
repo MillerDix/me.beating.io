@@ -50,6 +50,7 @@ body {
     background-color: #E9ECEE;
     justify-content: flex-start;
     padding: 0 12px;
+    overflow: hidden;
   }
 
   .home_header .navToggle {
@@ -125,6 +126,7 @@ body {
     align-items: center;
     overflow: hidden;
     justify-content: flex-end;
+    overflow: hidden;
   }
 
   .home_header .navToggle {
