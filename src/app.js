@@ -50,17 +50,18 @@ class App extends Component {
   }
 
   scrollToTop() {
-    // window.scrollTo(0, 0);
-    let timer = null, currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
-    let thisStep = 0;
-    let st = Math.ceil((2*currentPosition/500)/499);
-    const sc = () => {
-      currentPosition -= thisStep;
-      if (currentPosition > 0) {window.scrollTo(0, currentPosition);}
-      else {window.scrollTo(0, 0);clearInterval(timer);}
-      thisStep += st;
-    }
-    timer = setInterval(sc, 1);
+    window.scrollTo(0, 0);
+    // let timer = null, currentPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    // // console.log(currentPosition);
+    // let thisStep = 0;
+    // // let st = Math.ceil((2*currentPosition/500)/499);
+    // const sc = () => {
+    //   currentPosition -= thisStep;
+    //   if (currentPosition > 0) {window.scrollTo(0, currentPosition);}
+    //   else {window.scrollTo(0, 0);clearInterval(timer);}
+    //   thisStep += 10;
+    // }
+    // timer = setInterval(sc, 1);
   }
 
   render() {
