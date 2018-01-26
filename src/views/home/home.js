@@ -7,40 +7,20 @@ import Module from '../../common/module/module.js';
 import Progress from '../../common/progress/progress.js';
 import request from '../../common/utils/request.js';
 import api from '../../common/utils/api.js';
+import Slider from '../../common/Slider/Slider.js';
 
 // styles
 import style from './home.css';
 
 // assets
 import cloudinaries from '../../common/utils/cloudinaries.js';
-
-// article
-// const TDATA = [
-//   {
-//     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
-//     subtitle: 'AUGUST 11, 2016',
-//     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-//     image: Cassini
-//   },
-//   {
-//     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
-//     subtitle: 'AUGUST 11, 2016',
-//     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-//     image: Dawn
-//   },
-//   {
-//     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
-//     subtitle: 'AUGUST 11, 2016',
-//     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-//     image: Curiosity
-//   },
-//   {
-//     title: '5 GREAT LESSONS YOU CAN LEARN FROM MUSIC',
-//     subtitle: 'AUGUST 11, 2016',
-//     content: 'Omnes enim iucundum motum, quo sensus hilaretur. Ego vero isti, inquam, permitto. Qui est in parvis malis. Quid turpius quam sapientis',
-//     image: Space
-//   }
-// ]
+const POSTER_ITEMS = [
+  "http://res.cloudinary.com/millerd/image/upload/v1516952591/Beatinglog/home/curiosity-new-selfie.jpg",
+  "http://res.cloudinary.com/millerd/image/upload/v1515493291/Beatinglog/home/dawn_ci59ps.jpg",
+  "http://res.cloudinary.com/millerd/image/upload/v1515493293/Beatinglog/home/cosmic-exploration_okm3g6.jpg",
+  "http://res.cloudinary.com/millerd/image/upload/v1515493291/Beatinglog/home/astronaut_aldylu.jpg",
+  "http://res.cloudinary.com/millerd/image/upload/c_scale,q_auto,w_1200/v1515493300/Beatinglog/home/sunrise-spacewalk-png8_qhnw0k.png"
+];
 
 class Home extends Component {
 
@@ -83,10 +63,8 @@ class Home extends Component {
     // TODO: THIS IS UGLY
     return (
       <div className={style.home}>
-        <div className={style.poster} style={{height: this.state.posterHeight}}>
-          {
-            /* <div className={style.mask}></div> */
-          }
+        <div style={{height: this.state.posterHeight}}>
+          <Slider items={POSTER_ITEMS} indexed={true} arrow={true} speed={1} delay={5} autoplay={true} />
         </div>
         <div className={style.home_body}>
           <div className={style.content}>
