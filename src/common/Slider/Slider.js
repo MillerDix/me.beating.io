@@ -45,6 +45,10 @@ class Slider extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.iv);
+  }
+
   render() {
     const {items, arrow, indexed, speed} = this.props;
     return (

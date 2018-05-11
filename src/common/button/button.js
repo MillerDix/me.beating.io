@@ -8,7 +8,7 @@ const Minimal = (props) => {
   }
 
   return (
-    <div className={style.minimal} onClick={() => {jump(props.href)}}>
+    <div className={style.minimal} onClick={props.href ? () => jump(props.href) : () => props.onClick()}>
       {props.children}
       <div className={style.underline}></div>
     </div>
