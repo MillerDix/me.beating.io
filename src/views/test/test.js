@@ -35,6 +35,11 @@ class Test extends Component {
 
     _visualize(audioContext, buffer) {
         let audioBufferSouceNode = audioContext.createBufferSource(), analyser = audioContext.createAnalyser();
+        
+        analyser.fftSize = 512;
+        analyser.maxDecibels = -10;
+        analyser.minDecibels = -50;
+        console.log(analyser);
 
         // analyser.maxDecibels = 0;
         audioBufferSouceNode.connect(analyser);
@@ -49,23 +54,25 @@ class Test extends Component {
         var canvas = document.getElementById('canvas'),
             cwidth = canvas.width,
             cheight = canvas.height - 2,
-            meterWidth = 2, //能量条的宽度
-            meterNum = 1024 / 4, //计算当前画布上能画多少条
-            ctx = canvas.getContext('2d'),
-            //定义一个渐变样式用于画图
-            gradient = ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(1, '#0f0');
-        gradient.addColorStop(0.5, '#ff0');
-        gradient.addColorStop(0, '#f00');
-        ctx.fillStyle = gradient;
+            meterWidth = 10, //能量条的宽度
+            gap = 2,
+            defaultHeight = 2 * gap,
+            meterNum = cwidth / (meterWidth + gap), //计算当前画布上能画多少条
+            step = Math.floor(analyser.fftSize / 2 / meterNum),
+            ctx = canvas.getContext('2d');
+        
+        ctx.fillStyle = "#DFD7DC";
+        for (var j = 0; j < meterNum; j+=step) {
+            ctx.fillRect((j / step) * (gap + meterWidth), cheight - defaultHeight, meterWidth, defaultHeight);
+        }
+        console.log('canvas');
         var drawMeter = function() {
-            var array = new Uint8Array(analyser.fftSize);
+            var array = new Uint8Array(analyser.frequencyBinCount);
             analyser.getByteFrequencyData(array);
-            ctx.clearRect(0, 0, cwidth, cheight); // clear previous canvas
-            for (var i = 0; i < meterNum; i++) {
-                // var value = (array[i] - previousArray[i]) > 0 ? (array[i] - previousArray[i]) : (array[i] - previousArray[i]) * -1;
+            ctx.clearRect(0, 0, cwidth, cheight - defaultHeight); // clear previous canvas
+            for (var i = 0; i < meterNum; i+=step) {
                 var value = array[i];
-                ctx.fillRect(i * 4, cheight - value, meterWidth, value);
+                ctx.fillRect((i / step) * (gap + meterWidth), cheight - value * 0.5 - defaultHeight, meterWidth, value / 2);
             }
             requestAnimationFrame(drawMeter);
         }
@@ -73,7 +80,7 @@ class Test extends Component {
     }
 
     _fileUploaded(file) {
-        this.setState({ file, fileName: file.name }, () => this._start());
+        this.setState({ file, fileName: file.name });
     }
 
     _audioApi() {
@@ -82,7 +89,7 @@ class Test extends Component {
     }
 
     resume() {
-        
+        this._start();
     }
 
     render() {
