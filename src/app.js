@@ -16,7 +16,8 @@ class App extends Component {
     super(props);
     this.state = {
       folderOn: 'display-none',
-      showScrollToTop: false
+      showScrollToTop: false,
+      contentMinHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90) - 65
     };
 
     this.toggle = this.toggle.bind(this);
@@ -83,7 +84,7 @@ class App extends Component {
           </div>
           <div className="navToggle" onClick={() => this.toggle()}><div className="bar"></div></div>
         </div>
-        <div className="container">
+        <div className="container" style={{minHeight: this.state.contentMinHeight}}>
           <Route exact path="/" component={Home} />
           <Route path="/articles/detail/:id" component={ArtcDetail} />
           <Route path="/test" component={Test} />
