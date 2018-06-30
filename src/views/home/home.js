@@ -13,13 +13,13 @@ import Slider from '../../common/Slider/Slider.js';
 import style from './home.css';
 
 // assets
-import cloudinaries from '../../common/utils/cloudinaries.js';
+const { images } = api.assets;
 const POSTER_ITEMS = [
-  "http://res.cloudinary.com/millerd/image/upload/v1516952591/Beatinglog/home/curiosity-new-selfie.jpg",
-  "http://res.cloudinary.com/millerd/image/upload/v1515493291/Beatinglog/home/dawn_ci59ps.jpg",
-  "http://res.cloudinary.com/millerd/image/upload/v1515493293/Beatinglog/home/cosmic-exploration_okm3g6.jpg",
-  "http://res.cloudinary.com/millerd/image/upload/v1515493291/Beatinglog/home/astronaut_aldylu.jpg",
-  "http://res.cloudinary.com/millerd/image/upload/c_scale,q_auto,w_1200/v1515493300/Beatinglog/home/sunrise-spacewalk-png8_qhnw0k.png"
+  images.curiosity_new_selfie,
+  images.dawn,
+  images.cosmic_exploration,
+  images.astronaut_aldylu,
+  images.sunrise_spacewalk
 ];
 
 class Home extends Component {
@@ -82,7 +82,7 @@ class Home extends Component {
             })}
           </div>
           <Module
-            image={cloudinaries.Dawn}
+            image={images.dawn}
             title="Check My Skills"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           >
@@ -105,7 +105,7 @@ class Home extends Component {
           >
           </Module>
           <Module
-            image={cloudinaries.SunriseSpacewalk}
+            image={images.sunrise_spacewalk}
             title="Contact Me"
             subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
           >
