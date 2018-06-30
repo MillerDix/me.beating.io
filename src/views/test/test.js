@@ -39,7 +39,6 @@ class Test extends Component {
         analyser.fftSize = 512;
         analyser.maxDecibels = -10;
         analyser.minDecibels = -50;
-        console.log(analyser);
 
         // analyser.maxDecibels = 0;
         audioBufferSouceNode.connect(analyser);
@@ -65,7 +64,6 @@ class Test extends Component {
         for (var j = 0; j < meterNum; j+=step) {
             ctx.fillRect((j / step) * (gap + meterWidth), cheight - defaultHeight, meterWidth, defaultHeight);
         }
-        console.log('canvas');
         var drawMeter = function() {
             var array = new Uint8Array(analyser.frequencyBinCount);
             analyser.getByteFrequencyData(array);

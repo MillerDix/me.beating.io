@@ -28,6 +28,10 @@ class App extends Component {
 
   componentDidMount() {
     window._app_loaded();
+    var self = this;
+    window.onresize = function() {
+      self.setState({ contentMinHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90) - 65 });
+    }
   }
 
   componentWillUnmount() {
