@@ -17,7 +17,7 @@ class App extends Component {
     this.state = {
       folderOn: 'display-none',
       showScrollToTop: false,
-      contentMinHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90) - 65
+      contentMinHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90)
     };
 
     this.toggle = this.toggle.bind(this);
@@ -30,7 +30,7 @@ class App extends Component {
     window._app_loaded();
     var self = this;
     window.onresize = function() {
-      self.setState({ contentMinHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90) - 65 });
+      self.setState({ contentMinHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90) });
     }
   }
 
