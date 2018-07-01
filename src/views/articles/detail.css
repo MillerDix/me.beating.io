@@ -39,7 +39,7 @@
   transform: translateY(-50%);
 }
 
-@media screen and (min-width:414px) {
+@media screen and (min-width:415px) {
   .detail .poster .mask .titleWrapper .title {
     color: white;
     font-size: 40px;
@@ -51,7 +51,7 @@
   }
 }
 
-@media screen and (max-width:414px) {
+@media screen and (max-width:415px) {
   .detail .poster .mask .titleWrapper .title {
     color: white;
     font-size: 28px;
