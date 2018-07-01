@@ -47,6 +47,11 @@ class MusicVisualizer extends Component {
         });
     }
 
+    componentWillUnmount() {
+        const { audioContext } = this.state;
+        audioContext.close();
+    }
+
     _start() {
         const { audioContext, buffer } = this.state;
         this._visualize(audioContext, buffer);
