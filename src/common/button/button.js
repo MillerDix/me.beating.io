@@ -8,7 +8,7 @@ const Minimal = (props) => {
   }
 
   return (
-    <div className={style.minimal} onClick={() => {jump(props.href)}}>
+    <div className={style.minimal} onClick={props.href ? () => jump(props.href) : () => props.onClick()}>
       {props.children}
       <div className={style.underline}></div>
     </div>
@@ -17,7 +17,10 @@ const Minimal = (props) => {
 
 const Rounded = (props) => {
   return (
-    <div className={style.rounded} onClick={props.onClick}>
+    <div
+      className={props.disabled ? style.disabled : style.rounded}
+      onClick={props.disabled ? () => {} : props.onClick}
+    >
       {props.children}
       <div className={style.leftLine}></div>
     </div>

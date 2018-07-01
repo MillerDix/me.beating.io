@@ -1,23 +1,23 @@
 // basic
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 // page
 import Home from './views/home/home.js';
 import ArtcDetail from './views/articles/detail';
+import MusicVisualizer from './views/music_visualizer/music_visualizer.js';
 
 // component
 import {Minimal} from './common/button/button.js';
-
-// const history = createBrowserHistory();
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       folderOn: 'display-none',
-      showScrollToTop: false
+      showScrollToTop: false,
+      contentMinHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90) - 65
     };
 
     this.toggle = this.toggle.bind(this);
@@ -28,10 +28,13 @@ class App extends Component {
 
   componentDidMount() {
     window._app_loaded();
+    var self = this;
+    window.onresize = function() {
+      self.setState({ contentMinHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90) - 65 });
+    }
   }
 
   componentWillUnmount() {
-    console.log('routes quit');
     window.removeEventListener('scroll', this.showScroll, false);
   }
 
@@ -64,28 +67,30 @@ class App extends Component {
     // timer = setInterval(sc, 1);
   }
 
+  jump(location) {
+    const {history} = this.props;
+    history.push(location);
+  }
+
   render() {
     return (
       <div>
         <div className="home_header">
           <div className="navlogo">Beating</div>
           <div className={`navbar ${this.state.folderOn}`}>
-            <Minimal href="http://beating.io">HOME</Minimal>
-            <Minimal href="http://music.beating.io">MUSIC</Minimal>
+            <Minimal onClick={() => {this.jump("/"); this.toggle();}}>HOME</Minimal>
+            <Minimal onClick={() => {this.jump("/music_visualizer"); this.toggle();}}>MUSIC</Minimal>
             <Minimal href="http://map.beating.io">MAP</Minimal>
             <Minimal href="http://tv.beating.io">TV</Minimal>
             <Minimal href="http://admin.beating.io">ADMIN</Minimal>
-            <Minimal href="http://me.beating.io">ABOUT ME</Minimal>
+            <Minimal onClick={() => {this.jump("/music_visualizer"); this.toggle();}}>ABOUT ME</Minimal>
           </div>
           <div className="navToggle" onClick={() => this.toggle()}><div className="bar"></div></div>
         </div>
-        <div className="container">
-          <Router>
-            <div>
-              <Route exact path="/" component={Home} />
-              <Route path="/articles/detail/:id" component={ArtcDetail} />
-            </div>
-          </Router>
+        <div className="container" style={{minHeight: this.state.contentMinHeight}}>
+          <Route exact path="/" component={Home} />
+          <Route path="/articles/detail/:id" component={ArtcDetail} />
+          <Route path="/music_visualizer" component={MusicVisualizer} />
         </div>
         {this.state.showScrollToTop ? 
           <i className="fas fa-angle-up" onClick={() => this.scrollToTop()}
