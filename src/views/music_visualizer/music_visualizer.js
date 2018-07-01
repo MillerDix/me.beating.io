@@ -13,6 +13,7 @@ class MusicVisualizer extends Component {
             audioContext: null,
             source: null,
             buffer: null,
+            clientWidthForCanvas: (document.documentElement.clientWidth - 400) * 1.5, // the ratio 1.5 === canvas.default.height / canvas.style.height
             playerStatus: 3   // 0: finish or before start, 1: playing, 2: paused, 3: loading, 4: error;
         };
 
@@ -80,11 +81,11 @@ class MusicVisualizer extends Component {
             meterWidth = 14, //能量条的宽度
             gap = 4,
             defaultHeight = gap,
-            meterNum = cwidth / (meterWidth + gap), //计算当前画布上能画多少条
+            meterNum = Math.floor(cwidth / (meterWidth + gap)), //计算当前画布上能画多少条
             step = Math.floor(signalLength / meterNum),
             ctx = canvas.getContext('2d');
-            
-        ctx.fillStyle = "#DFD7DC";
+
+            ctx.fillStyle = "#DFD7DC";
         for (var j = 0; j < signalLength; j+=step) {
             ctx.fillRect((j / step) * (gap + meterWidth), cheight - defaultHeight, meterWidth, defaultHeight);
         }
@@ -119,7 +120,7 @@ class MusicVisualizer extends Component {
     }
 
     render() {
-        const { playerStatus } = this.state;
+        const { playerStatus, clientWidthForCanvas } = this.state;
         let playerControlTitle = '';
         switch(playerStatus) {
             case 0:
@@ -146,7 +147,7 @@ class MusicVisualizer extends Component {
                 <span className={style.play_control}>
                     <Rounded disabled={playerStatus === 3 || playerStatus === 4} onClick={() => this.togglePlay()}>{playerControlTitle}</Rounded>
                 </span>
-                <canvas id='canvas' width="1000" className={style.canvas}></canvas>
+                <canvas id='canvas' width={clientWidthForCanvas} className={style.canvas}></canvas>
             </div>
         );
     }

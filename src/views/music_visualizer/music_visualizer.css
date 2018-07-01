@@ -9,6 +9,7 @@
     background-repeat: no-repeat;
 }
 .canvas {
+    /* width: 300; */
     height: 100px;
     position: absolute;
     left: 50%;
