@@ -6,7 +6,7 @@ import {Route} from 'react-router-dom';
 // page
 import Home from './views/home/home.js';
 import ArtcDetail from './views/articles/detail';
-import Test from './views/test/test.js';
+import MusicVisualizer from './views/music_visualizer/music_visualizer.js';
 
 // component
 import {Minimal} from './common/button/button.js';
@@ -35,7 +35,6 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    console.log('routes quit');
     window.removeEventListener('scroll', this.showScroll, false);
   }
 
@@ -79,19 +78,19 @@ class App extends Component {
         <div className="home_header">
           <div className="navlogo">Beating</div>
           <div className={`navbar ${this.state.folderOn}`}>
-            <Minimal href="http://www.beating.io">HOME</Minimal>
-            <Minimal href="http://music.beating.io">MUSIC</Minimal>
+            <Minimal onClick={() => {this.jump("/"); this.toggle();}}>HOME</Minimal>
+            <Minimal onClick={() => {this.jump("/music_visualizer"); this.toggle();}}>MUSIC</Minimal>
             <Minimal href="http://map.beating.io">MAP</Minimal>
             <Minimal href="http://tv.beating.io">TV</Minimal>
             <Minimal href="http://admin.beating.io">ADMIN</Minimal>
-            <Minimal onClick={() => {this.jump("/test"); this.toggle();}}>ABOUT ME</Minimal>
+            <Minimal onClick={() => {this.jump("/music_visualizer"); this.toggle();}}>ABOUT ME</Minimal>
           </div>
           <div className="navToggle" onClick={() => this.toggle()}><div className="bar"></div></div>
         </div>
         <div className="container" style={{minHeight: this.state.contentMinHeight}}>
           <Route exact path="/" component={Home} />
           <Route path="/articles/detail/:id" component={ArtcDetail} />
-          <Route path="/test" component={Test} />
+          <Route path="/music_visualizer" component={MusicVisualizer} />
         </div>
         {this.state.showScrollToTop ? 
           <i className="fas fa-angle-up" onClick={() => this.scrollToTop()}

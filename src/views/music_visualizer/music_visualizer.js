@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Rounded} from '../../common/button/button.js';
 import request from '../../common/utils/request.js';
 import api from '../../common/utils/api.js';
-import style from './test.css';
+import style from './music_visualizer.css';
 
-class Test extends Component {
+class MusicVisualizer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ class Test extends Component {
             audioContext: null,
             source: null,
             buffer: null,
-            playerStatus: 0   // 0: finish or before start, 1: playing, 2: paused
+            playerStatus: 3   // 0: finish or before start, 1: playing, 2: paused, 3: loading, 4: error;
         };
 
         // this._fileUploaded = this._fileUploaded.bind(this);
@@ -27,7 +27,7 @@ class Test extends Component {
     componentDidMount() {
         this._audioApi();
         request({
-            url: api.assets.audios.sunburst,
+            url: api.assets.audios.pneumatic_tokyo,
             method: 'get'
         }).then(res => {
             return res.blob();
@@ -37,10 +37,13 @@ class Test extends Component {
                 let fileResult = e.target.result, audioContext = this.state.audioContext, self = this;
                 audioContext.decodeAudioData(fileResult, function(buffer) {
                     // self._visualize(audioContext, buffer);
-                    self.setState({ buffer });
-                }, function(e) { console.log("文件解码失败"); });
+                    self.setState({ buffer, playerStatus: 0 });
+                }, function(e) { self.setState({ playerStatus: 4 }); });
             }
             fr.readAsArrayBuffer(blob);
+        }).catch(err => {
+            console.log(err);
+            this.setState({ playerStatus: 4 });
         });
     }
 
@@ -69,14 +72,13 @@ class Test extends Component {
         var canvas = document.getElementById('canvas'),
             cwidth = canvas.width,
             cheight = canvas.height - 2,
-            meterWidth = 10, //能量条的宽度
-            gap = 2,
-            defaultHeight = 2 * gap,
+            meterWidth = 14, //能量条的宽度
+            gap = 4,
+            defaultHeight = gap,
             meterNum = cwidth / (meterWidth + gap), //计算当前画布上能画多少条
             step = Math.floor(signalLength / meterNum),
             ctx = canvas.getContext('2d');
             
-        console.log(cwidth);
         ctx.fillStyle = "#DFD7DC";
         for (var j = 0; j < signalLength; j+=step) {
             ctx.fillRect((j / step) * (gap + meterWidth), cheight - defaultHeight, meterWidth, defaultHeight);
@@ -113,22 +115,36 @@ class Test extends Component {
 
     render() {
         const { playerStatus } = this.state;
+        let playerControlTitle = '';
+        switch(playerStatus) {
+            case 0:
+                playerControlTitle = 'START';
+                break;
+            case 1:
+                playerControlTitle = 'PAUSE';
+                break;
+            case 2:
+                playerControlTitle = 'RESUME';
+                break;
+            case 3:
+                playerControlTitle = 'LOADING';
+                break;
+            case 4:
+                playerControlTitle = 'ERROR';
+                break;
+            default:
+                break;
+        }
         return (
             <div className={style.container} style={{backgroundImage: "url('http://res.cloudinary.com/millerd/image/upload/v1530364545/Beatinglog/home/pneumatic_tokyo_cover.jpg')"}}>
                 {/* <input type="file" onChange={(evt) => this._fileUploaded(evt.target.files[0])} /> */}
                 <span className={style.play_control}>
-                    <Rounded
-                        onClick={() => this.togglePlay()}
-                    >
-                        {playerStatus === 0 ?
-                            'START' : (playerStatus === 1 ? 'PAUSE' : 'RESUME')
-                        }
-                    </Rounded>
+                    <Rounded disabled={playerStatus === 3 || playerStatus === 4} onClick={() => this.togglePlay()}>{playerControlTitle}</Rounded>
                 </span>
-                <canvas id='canvas' width="800" className={style.canvas}></canvas>
+                <canvas id='canvas' width="1000" className={style.canvas}></canvas>
             </div>
         );
     }
 }
 
-export default Test;
+export default MusicVisualizer;

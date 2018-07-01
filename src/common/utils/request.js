@@ -23,7 +23,6 @@ const request = ({ url, ...options }) => {
 
   return fetch(url, defaultOptions)
     .then(response => {
-      console.log(response);
       if (defaultOptions.method.toLowerCase() === 'get') {
         return response;
       }
