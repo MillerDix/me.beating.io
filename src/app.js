@@ -7,6 +7,7 @@ import {Route} from 'react-router-dom';
 import Home from './views/home/home.js';
 import ArtcDetail from './views/articles/detail';
 import MusicVisualizer from './views/music_visualizer/music_visualizer.js';
+import Test from './views/test/test.js';
 
 // component
 import {Minimal} from './common/button/button.js';
@@ -83,7 +84,7 @@ class App extends Component {
             <Minimal href="http://map.beating.io">MAP</Minimal>
             <Minimal href="http://tv.beating.io">TV</Minimal>
             <Minimal href="http://admin.beating.io">ADMIN</Minimal>
-            <Minimal onClick={() => {this.jump("/music_visualizer"); this.toggle();}}>ABOUT ME</Minimal>
+            <Minimal onClick={() => {this.jump("/test"); this.toggle();}}>ABOUT ME</Minimal>
           </div>
           <div className="navToggle" onClick={() => this.toggle()}><div className="bar"></div></div>
         </div>
@@ -91,6 +92,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/articles/detail/:id" component={ArtcDetail} />
           <Route path="/music_visualizer" component={MusicVisualizer} />
+          <Route path="/test" component={Test} />
         </div>
         {this.state.showScrollToTop ? 
           <i className="fas fa-angle-up" onClick={() => this.scrollToTop()}
