@@ -9,10 +9,11 @@
     background-repeat: no-repeat;
 }
 .canvas {
+    /* width: 300; */
     height: 100px;
     position: absolute;
     left: 50%;
-    bottom: 10px;
+    bottom: 44px;
     transform: translateX(-50%);
 }
 
@@ -21,4 +22,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.progress {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    height: 20px;
+    overflow: hidden;
+    border: solid 3px #DFD7DC;
+}
+
+.progress .percent {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    bottom: 1px;
+    display: inline-block;
+    background-color: #DFD7DC;
 }

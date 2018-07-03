@@ -4,133 +4,129 @@ import request from '../../common/utils/request.js';
 import api from '../../common/utils/api.js';
 import style from './music_visualizer.css';
 
+let el_player = null;
 class MusicVisualizer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // file: null,
             fileName: null,
             audioContext: null,
             source: null,
             buffer: null,
-            clientWidthForCanvas: (document.documentElement.clientWidth - 400) * 1.5, // the ratio 1.5 === canvas.default.height / canvas.style.height
-            playerStatus: 3   // 0: finish or before start, 1: playing, 2: paused, 3: loading, 4: error;
+            clientWidthForCanvas: (document.documentElement.clientWidth - 500) * 1.5, // the ratio 1.5 === canvas.default.height / canvas.style.height
+            playerStatus: 3,  // 1: playing, 2: paused, 3: loading, 4: error;
+            playedPercent: '0%'
         };
 
-        // this._fileUploaded = this._fileUploaded.bind(this);
-        this._start = this._start.bind(this);
         this._audioApi = this._audioApi.bind(this);
-        this._visualize = this._visualize.bind(this);
         this._drawSpectrum = this._drawSpectrum.bind(this);
         this.togglePlay = this.togglePlay.bind(this);
+        this.canPlay = this.canPlay.bind(this);
+        this.timeUpdate = this.timeUpdate.bind(this);
+        this.suspend = this.suspend.bind(this);
+        this.progress = this.progress.bind(this);
+    }
+
+    canPlay() {
+        // the first frame is ready to go
+        this._audioApi();
+    }
+
+    timeUpdate() {
+        this.setState({ playedPercent: el_player.currentTime / el_player.duration * 100 + '%' });
+    }
+
+    suspend() {
+        this.setState({ playerStatus: 2 });
+    }
+
+    progress() {
+        this.setState({ playerStatus: 3 });
     }
 
     componentDidMount() {
-        this._audioApi();
-        request({
-            url: api.assets.audios.pneumatic_tokyo,
-            method: 'get'
-        }).then(res => {
-            return res.blob();
-        }).then(blob => {
-            let fr = new FileReader();
-            fr.onload = (e) => {
-                let fileResult = e.target.result, audioContext = this.state.audioContext, self = this;
-                audioContext.decodeAudioData(fileResult, function(buffer) {
-                    // self._visualize(audioContext, buffer);
-                    self.setState({ buffer, playerStatus: 0 });
-                }, function(e) { self.setState({ playerStatus: 4 }); });
-            }
-            fr.readAsArrayBuffer(blob);
-        }).catch(err => {
-            console.log(err);
-            this.setState({ playerStatus: 4 });
-        });
+        el_player = document.getElementsByTagName('audio')[0];
+
+        el_player.addEventListener("canplay", this.canPlay);
+        el_player.addEventListener("timeupdate", this.timeUpdate);
+        el_player.addEventListener("suspend", this.suspend);
+        el_player.addEventListener('progress', this.progress);
     }
 
     componentWillUnmount() {
         const { audioContext } = this.state;
+        el_player.removeEventListener("canplay", this.canPlay);
+        el_player.removeEventListener("timeupdate", this.timeUpdate);
+        el_player.removeEventListener("suspend", this.suspend);
+        el_player.removeEventListener('progress', this.progress);
         audioContext.close();
-    }
-
-    _start() {
-        const { audioContext, buffer } = this.state;
-        this._visualize(audioContext, buffer);
-    }
-
-    _visualize(audioContext, buffer) {
-        let audioBufferSouceNode = audioContext.createBufferSource(), analyser = audioContext.createAnalyser();
-        
-        analyser.fftSize = 512;
-        analyser.maxDecibels = 20;
-        analyser.minDecibels = -60;
-
-        audioBufferSouceNode.connect(analyser);
-        analyser.connect(audioContext.destination);
-        audioBufferSouceNode.buffer = buffer;
-        audioBufferSouceNode.start(0);
-        
-        this._drawSpectrum(analyser);
     }
     
     _drawSpectrum(analyser) {
         let signalLength = analyser.fftSize / 2;
         var canvas = document.getElementById('canvas'),
-            cwidth = canvas.width,
-            cheight = canvas.height - 2,
-            meterWidth = 14, //能量条的宽度
-            gap = 4,
-            defaultHeight = gap,
-            meterNum = Math.floor(cwidth / (meterWidth + gap)), //计算当前画布上能画多少条
-            step = Math.floor(signalLength / meterNum),
-            ctx = canvas.getContext('2d');
-
-            ctx.fillStyle = "#DFD7DC";
+        cwidth = canvas.width,
+        cheight = canvas.height - 2,
+        meterWidth = 14, //能量条的宽度
+        gap = 4,
+        defaultHeight = gap,
+        meterNum = Math.floor(cwidth / (meterWidth + gap)), //计算当前画布上能画多少条
+        step = Math.floor(signalLength / meterNum),
+        ctx = canvas.getContext('2d');
+        
+        ctx.fillStyle = "#DFD7DC";
         for (var j = 0; j < signalLength; j+=step) {
             ctx.fillRect((j / step) * (gap + meterWidth), cheight - defaultHeight, meterWidth, defaultHeight);
         }
-
+        
         var drawMeter = function() {
-            var array = new Uint8Array(analyser.frequencyBinCount);
-            analyser.getByteFrequencyData(array);
-            ctx.clearRect(0, 0, cwidth, cheight - defaultHeight); // clear previous canvas
-            for (var i = 0; i < signalLength; i+=step) {
-                var value = array[i];
-                ctx.fillRect((i / step) * (gap + meterWidth), cheight - value * 0.5 - defaultHeight, meterWidth, value / 2);
+            if(!el_player.paused) {
+                var array = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(array);
+                ctx.clearRect(0, 0, cwidth, cheight - defaultHeight); // clear previous canvas
+                for (var i = 0; i < signalLength; i+=step) {
+                    var value = array[i];
+                    ctx.fillRect((i / step) * (gap + meterWidth), cheight - value * 0.5 - defaultHeight, meterWidth, value / 2);
+                }
             }
+            
             requestAnimationFrame(drawMeter);
         }
         requestAnimationFrame(drawMeter);
     }
 
-    // _fileUploaded(file) {
-    //     this.setState({ file, fileName: file.name });
-    // }
-
     _audioApi() {
         let AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.msAudioContext;
-        this.setState({audioContext: new AudioContext()});
+        let audioContext = new AudioContext();
+        this.setState({audioContext});
+
+        let audioBufferSouceNode = audioContext.createMediaElementSource(el_player), analyser = audioContext.createAnalyser();
+        
+        analyser.fftSize = 512;
+        analyser.maxDecibels = 20;
+        analyser.minDecibels =  -60;
+
+        audioBufferSouceNode.connect(analyser);
+        analyser.connect(audioContext.destination);
+        
+        this._drawSpectrum(analyser);
     }
 
     togglePlay() {
-        const { playerStatus, audioContext } = this.state;
-        if(playerStatus === 0) { this._start(); this.setState({ playerStatus: 1 }); }
-        else if(playerStatus === 1) { audioContext.suspend(); this.setState({ playerStatus: 2}); }
-        else { audioContext.resume(); this.setState({ playerStatus: 1}); }
+        const { playerStatus } = this.state;
+        if(playerStatus === 1) { el_player.pause(); this.setState({ playerStatus: 2}); }
+        else if(playerStatus === 2) { el_player.play(); this.setState({ playerStatus: 1}); }
     }
 
     render() {
-        const { playerStatus, clientWidthForCanvas } = this.state;
+        const { playerStatus, clientWidthForCanvas, playedPercent } = this.state;
         let playerControlTitle = '';
         switch(playerStatus) {
-            case 0:
-                playerControlTitle = 'START';
-                break;
             case 1:
                 playerControlTitle = 'PAUSE';
                 break;
             case 2:
-                playerControlTitle = 'RESUME';
+                playerControlTitle = 'PLAY';
                 break;
             case 3:
                 playerControlTitle = 'LOADING';
@@ -143,11 +139,12 @@ class MusicVisualizer extends Component {
         }
         return (
             <div className={style.container} style={{backgroundImage: "url('http://res.cloudinary.com/millerd/image/upload/v1530364545/Beatinglog/home/pneumatic_tokyo_cover.jpg')"}}>
-                {/* <input type="file" onChange={(evt) => this._fileUploaded(evt.target.files[0])} /> */}
                 <span className={style.play_control}>
                     <Rounded disabled={playerStatus === 3 || playerStatus === 4} onClick={() => this.togglePlay()}>{playerControlTitle}</Rounded>
                 </span>
                 <canvas id='canvas' width={clientWidthForCanvas} className={style.canvas}></canvas>
+                <div className={style.progress} style={{width: clientWidthForCanvas / 1.5 - 6 + 'px'}}><div className={style.percent} style={{width: playedPercent, maxWidth: clientWidthForCanvas / 1.5 - 8 + 'px'}}></div></div>
+                <audio crossOrigin="anonymous" src={api.assets.audios.pneumatic_tokyo} />
             </div>
         );
     }
