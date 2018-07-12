@@ -1,4 +1,4 @@
-.container {
+/* .container {
     position: absolute;
     top: 0;
     left: 0;
@@ -9,7 +9,6 @@
     background-repeat: no-repeat;
 }
 .canvas {
-    /* width: 300; */
     height: 100px;
     position: absolute;
     left: 50%;
@@ -42,4 +41,4 @@
     bottom: 1px;
     display: inline-block;
     background-color: #DFD7DC;
-}
+} */
