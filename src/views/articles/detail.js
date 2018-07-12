@@ -17,7 +17,7 @@ class ArtcDetail extends Component {
 
     this.state = {
       detail: {
-        Id: null,
+        ID: null,
         Title: '',
         Subtitle: '',
         Content: '',
@@ -37,7 +37,7 @@ class ArtcDetail extends Component {
     const { id } = this.props.match.params;
     request({
       url: api.article.detail,
-      data: {Id: parseInt(id, 10)},   // need int
+      data: {ID: parseInt(id, 10)},   // need int
       method: 'POST',
     }).then(res => {
       Loading.end();

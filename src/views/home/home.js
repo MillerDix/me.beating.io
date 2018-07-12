@@ -53,9 +53,9 @@ class Home extends Component {
     this.setState({posterHeight: document.documentElement.clientHeight - (document.documentElement.clientWidth < 1025 ? 56 : 90)});
   }
 
-  onclick(Id) {
+  onclick(ID) {
     const {history} = this.props;
-    history.push(`/articles/detail/${Id}`);
+    history.push(`/articles/detail/${ID}`);
   }
 
   render() {
@@ -71,7 +71,7 @@ class Home extends Component {
             {articles.map((item, index) => {
               return (
                 <Article
-                  onClick={() => this.onclick(item.Id)}
+                  onClick={() => this.onclick(item.ID)}
                   key={index}
                   image={item.Poster}
                   title={item.Title}
