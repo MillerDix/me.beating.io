@@ -10,7 +10,6 @@ const request = ({ url, ...options }) => {
         'Content-type': 'application/json'
       },
       body: JSON.stringify({ ...options.data }),
-      mode: 'cors',
       ...options
     }
   }else if (options.method.toLowerCase() === 'get') {
