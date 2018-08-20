@@ -79,8 +79,12 @@ module.exports = function(proxy, allowedHost) {
     public: allowedHost,
     proxy: {
       '/api/blog': {
-          target: 'http://www.beating.io:8080',
-          changeOrigin: true,
+        target: 'http://www.beating.io:8080',
+        changeOrigin: true,
+      },
+      '/api/vision': {
+        target: 'http://localhost:8081',
+        changeOrigin: true,
       }
     },
     setup(app) {
