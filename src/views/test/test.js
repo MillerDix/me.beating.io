@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import {Rounded} from '../../common/button/button.js';
 import request from '../../common/utils/request.js';
 import api from '../../common/utils/api.js';
-import style from './test.css';
+import styles from './test.css';
+import Select from '../../common/Select/Select.js';
 
 class Test extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            imageUrl: ""
+            imageUrl: "",
+            fullMatchPic: [],
+            partialMatchPic: []
         }
 
         this.onQueryInputChange = this.onQueryInputChange.bind(this);
         this.onClickQuery = this.onClickQuery.bind(this);
+        this.inputOnChange = this.inputOnChange.bind(this);
     }
 
     onQueryInputChange(event) {
@@ -30,15 +34,48 @@ class Test extends Component {
             data: { imageUrl: this.state.imageUrl },   // need int
         })
             .then(resp => {
-                console.log(resp);
+                if(resp.full_matching_images) {  // TODO: global alert
+                    this.setState({ fullMatchPic: resp.full_matching_images, partialMatchPic: resp.partial_matching_images });
+                }
             });
     }
 
+    inputOnChange(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            request({
+                url: api.vision.web,
+                method: 'post',
+                data: { image: reader.result.replace(/.*base64,/, '') },   // need int
+            })
+                .then(resp => {
+                    if(resp) {  // TODO: global alert
+                        this.setState({ fullMatchPic: resp.full_matching_images, partialMatchPic: resp.partial_matching_images });
+                    }
+                });
+        }
+        reader.onerror = err => {
+            console.log("Error: ", err);
+        }
+    }
+
     render() {
+        const { imageUrl, fullMatchPic, partialMatchPic } = this.state;
+        console.log(fullMatchPic, partialMatchPic);
         return(
             <div>
-                <input value={this.state.imageUrl} onChange={this.onQueryInputChange} />
+                <input value={imageUrl} onChange={this.onQueryInputChange} />
                 <Rounded onClick={this.onClickQuery}>查询</Rounded>
+                <input type="file" onChange={this.inputOnChange} />
+                {partialMatchPic && partialMatchPic.map((src, index) => (
+                    <img key={index} src={src.url} className={styles.image} alt="fucked" width={200} height={200} />
+                ))}
+                {/* <img src="https://mmbiz.qpic.cn/mmbiz_gif/PWokHSrIciapBApt7TOyUicbdJnfl5TdnW1CGGO1T9WiaficYM45VLhMQBaOeSfiae6SbmxQJbiaYYCMkmVkjWIK3UMQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="fuck" /> */}
+                {/* <Select /> */}
             </div>
         );
     }
