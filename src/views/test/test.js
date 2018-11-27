@@ -3,6 +3,7 @@ import {Rounded} from '../../common/button/button.js';
 import request from '../../common/utils/request.js';
 import api from '../../common/utils/api.js';
 import styles from './test.css';
+import Select from '../../common/Select/Select.js';
 
 class Test extends Component {
 
@@ -52,7 +53,7 @@ class Test extends Component {
                 data: { image: reader.result.replace(/.*base64,/, '') },   // need int
             })
                 .then(resp => {
-                    if(resp.full_matching_images) {  // TODO: global alert
+                    if(resp) {  // TODO: global alert
                         this.setState({ fullMatchPic: resp.full_matching_images, partialMatchPic: resp.partial_matching_images });
                     }
                 });
@@ -63,16 +64,18 @@ class Test extends Component {
     }
 
     render() {
-        const { imageUrl, fullMatchPic } = this.state;
+        const { imageUrl, fullMatchPic, partialMatchPic } = this.state;
+        console.log(fullMatchPic, partialMatchPic);
         return(
             <div>
                 <input value={imageUrl} onChange={this.onQueryInputChange} />
                 <Rounded onClick={this.onClickQuery}>查询</Rounded>
-                {fullMatchPic.map((src, index) => (
+                <input type="file" onChange={this.inputOnChange} />
+                {partialMatchPic && partialMatchPic.map((src, index) => (
                     <img key={index} src={src.url} className={styles.image} alt="fucked" width={200} height={200} />
                 ))}
-                <input type="file" onChange={this.inputOnChange} />
                 {/* <img src="https://mmbiz.qpic.cn/mmbiz_gif/PWokHSrIciapBApt7TOyUicbdJnfl5TdnW1CGGO1T9WiaficYM45VLhMQBaOeSfiae6SbmxQJbiaYYCMkmVkjWIK3UMQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="fuck" /> */}
+                {/* <Select /> */}
             </div>
         );
     }
