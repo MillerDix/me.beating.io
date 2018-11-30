@@ -2,9 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app.js';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Router, Route} from 'react-router-dom';
 // import registerServiceWorker from './registerServiceWorker';
-// import {unregister} from './registerServiceWorker';
+// import {unregister} from './registerServiceWorker'; 
+import createBrowserHistory from "history/createBrowserHistory";
 
-ReactDOM.render(<Router><Route component={App} /></Router>, document.getElementById('root'));
+const customHistory = createBrowserHistory();
+customHistory.listen((location, action) => {
+  setTimeout(() => {
+    // if(action === 'POP') { return; }
+    window.scrollTo(0, 0);
+  }, 0);
+})
+
+ReactDOM.render(<Router history={customHistory}><Route component={App} /></Router>, document.getElementById('root'));
 // registerServiceWorker();

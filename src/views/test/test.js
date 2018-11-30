@@ -27,7 +27,6 @@ class Test extends Component {
 
     onClickQuery() {
         if (this.state.imageUrl == null) { return; }
-        console.log(this.state.imageUrl);
         request({
             url: api.vision.web,
             method: 'post',
